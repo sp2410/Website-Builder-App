@@ -6,6 +6,17 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  lazyload>
+
+   <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Great+Vibes|Baloo+Chettan|Damion|Heebo|Kaushan+Script|Lobster|Playfair+Display+SC" rel="stylesheet"  lazyload>
+
+  <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"  lazyload>
+
+  
+  <%= yield :stylesheet_includes %>
+  
+  
   </head>
 
   <body>
