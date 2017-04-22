@@ -1,0 +1,11 @@
+<div class = "headerdiv" style ="background-color: <%= page.page_color if page.page_color %>">
+	<h1 style ="color: <%= page.header_color if page.header_color  %>">	  
+	  <%= page.header.upcase if page.header.present? %>
+	</h1>
+	<h3 style ="color: <%= page.subheader_color if page.subheader_color %>">	  
+	  <%= page.subheader.upcase if page.subheader.present? %>
+	</h3>
+
+	<%= link_to 'Edit', edit_website_page_path(@website.id, page.id) %>	
+	
+</div>

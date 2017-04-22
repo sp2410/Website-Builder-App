@@ -10,6 +10,9 @@ class WebsitesController < ApplicationController
   # GET /websites/1
   # GET /websites/1.json
   def show
+    @websitepages = @website.pages
+    @pages = @websitepages.where(:show_page_on_index => true)
+    @times = @website.timetables
   end
 
   # GET /websites/new
@@ -24,10 +27,13 @@ class WebsitesController < ApplicationController
   # POST /websites
   # POST /websites.json
   def create
-    @website = Website.new(website_params)
+    @website = Website.new(website_params)      
 
     respond_to do |format|
       if @website.save
+
+        Website.create_home_page(@website)
+
         format.html { redirect_to @website, notice: 'Website was successfully created.' }
         format.json { render :show, status: :created, location: @website }
       else
@@ -69,7 +75,7 @@ class WebsitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def website_params
-      params.require(:website).permit(:title,:logo,:mainimage,:subheading,:phone,:city,:state,:zipcode,:facebooklink,:twitterlink,:youtubelink,:template_csses_id)
+      params.require(:website).permit(:title,:logo,:mainimage,:subheading,:title_color, :subheading_color, :footer_color, :footer_text_color,:phone,:city,:state,:zipcode,:facebooklink,:twitterlink,:youtubelink,:template_csses_id)
     end
 end
 

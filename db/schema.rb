@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419234520) do
+ActiveRecord::Schema.define(version: 20170422210244) do
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "messagetext"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "website_id"
+    t.index ["website_id"], name: "index_messages_on_website_id"
+  end
 
   create_table "page_sections", force: :cascade do |t|
     t.string   "title"
@@ -25,9 +35,15 @@ ActiveRecord::Schema.define(version: 20170419234520) do
 
   create_table "pages", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "website_id"
+    t.boolean  "show_page_on_index", default: false
+    t.string   "header"
+    t.string   "header_color"
+    t.string   "subheader"
+    t.string   "subheader_color"
+    t.string   "page_color"
     t.index ["website_id"], name: "index_pages_on_website_id"
   end
 
@@ -36,6 +52,16 @@ ActiveRecord::Schema.define(version: 20170419234520) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "css_description"
+  end
+
+  create_table "timetables", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "day"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "website_id"
+    t.index ["website_id"], name: "index_timetables_on_website_id"
   end
 
   create_table "websites", force: :cascade do |t|
@@ -56,6 +82,10 @@ ActiveRecord::Schema.define(version: 20170419234520) do
     t.string   "facebooklink"
     t.string   "twitterlink"
     t.string   "youtubelink"
+    t.string   "title_color"
+    t.string   "subheading_color"
+    t.string   "footer_color"
+    t.string   "footer_text_color"
     t.index ["template_csses_id"], name: "index_websites_on_template_csses_id"
   end
 

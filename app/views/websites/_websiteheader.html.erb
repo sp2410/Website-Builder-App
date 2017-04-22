@@ -1,23 +1,35 @@
-<div class ="headerdiv" style = "background-image: url(<%= @website.mainimage %>); background-repeat: no-repeat; background-size:cover; background-position: center; box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5); " > 
-		
+<div class ="headerdiv" style = "
+	<%- if @website.mainimage.present? -%>
+		background-image: url(<%= @website.mainimage %>); box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5); 
+	<% else %>
+		background-color:<%= @website.footer_color if @website.footer_color.present?%>;
+	<% end %>
+	background-repeat: no-repeat; background-size:cover; background-position: center;" > 
+	
 		<%= image_tag @website.logo, :class => "style_image" %>		
-
-
-		<h1 style = "margin-top: 1%;">
+		
+		<h1 style = "margin-top: 1%; color: <%= @website.title_color if @website.title_color.present? %>">
 			<%= @website.title.upcase %>
 		</h1>		
-		<h3>		  
+		<h3 style = "color: <%= @website.subheading_color if @website.subheading_color.present? %>">		  
 		  <%= @website.subheading.upcase %>
 		</h3>
-		
 
-		<div class="col-md-12 text-center" > 
-		    <%= link_to 'CONTACT US', @website, class: "btn btn-default" %>
+		<div class="col-md-12 text-center" style = "margin-top: 1%;"> 
+			<a href= <%="https://#{@website.facebooklink}" %>> <i class=" fa fa-facebook"></i> </a>
+		    <a href=<%="https://#{@website.youtubelink}" %>> <i class=" fa fa-youtube"></i> </a>
+		    <a href=<%="https://#{@website.twitterlink}" %>> <i class=" fa fa-twitter"></i> </a>
 		</div>
-
-		<div class="col-md-12 text-center" style = "margin-top: 2%;"> 
-			<%= link_to 'EDIT WEBSITE', edit_website_path(@website),class: "btn btn-default" %> 			
+				
+		<div class="col-md-12 text-center" style = "margin-top: 1%;" > 
+		    <%= link_to "#{@website.phone if @website.phone}", @website, class: "btn btn-default " %>		    
+		</div>
+		<div class="col-md-12 text-center" style = "margin-top: 1%;" > 
+			<h3><%= link_to 'SEND A MESSAGE', new_website_message_path(@website.id), class: "btn btn-primary" %></h3>
+		</div>
+		
+		<div class="col-md-12 text-center" style = "margin-top: 1%;"> 
+			<h4><%= link_to 'Edit Website', edit_website_path(@website),class: "btn btn-default btn-xs" %></h4>
 		</div>
 	
-
 </div>

@@ -4,35 +4,32 @@
 
       <ul class="nav navbar-nav navbar-left">
         <li>          
-		  <%= image_tag @website.logo, :size => "40x40" %>		
+		      <%= image_tag @website.logo,:class => "style_logo" %>		
         </li>
       </ul>
 
 
-      <ul class="nav navbar-nav navbar-right">        
+      <ul class="nav navbar-nav navbar-right">             
+
+
+        <% @websitepages.each do |nav| %>  
+          <li>
+            <%= link_to "#{nav.title.upcase}", website_page_path(@website.id,nav.id) %>
+          </li>
+        <% end %> 
+
         <li>
-          <%= link_to "HOME", @website %>
+            <%= link_to "VIEW YOUR INBOX", website_messages_path(@website.id) %>
+        </li>
+
+        <li>
+          <%= link_to 'ADD A PAGE', new_website_page_path(@website.id) %>
         </li> 
-        <li>
-          <%= link_to "ADVERTISERS", @website %>
-        </li>
-        <li>
-          <%= link_to "PUBLISHERS", @website %>
-        </li>
-        <li>
-          <%= link_to "AD FORMATS", @website %>
-        </li>
-        <li>
-          <%= link_to "MY ADS", @website %>
-        </li>
-        <li>
-          <%= link_to "SOCIAL MEDIA CAMPAIGNS", @website %>
-        </li>
-        <li>
-          <%= link_to "PRICING", @website %>
-        </li>
-                                         
+
       </ul>
+      
+
+      
     </div>
   </div>
 </nav>

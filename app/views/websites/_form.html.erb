@@ -10,18 +10,20 @@
       </ul>
     </div>
   <% end %>
-
-
   
 
 <!--     t.integer  "template_csses_id"     -->
 
 
 
-
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title_color %>
+    <%= f.text_field :title_color %>
   </div>
 
   <div class="field">
@@ -38,6 +40,37 @@
     <%= f.label :subheading %>
     <%= f.text_field :subheading %>
   </div>
+
+  <div class="field">
+    <%= f.label :facebooklink %>
+    <%= f.text_field :facebooklink %>
+  </div>
+
+   <div class="field">
+    <%= f.label :twitterlink %>
+    <%= f.text_field :twitterlink %>
+  </div>
+
+   <div class="field">
+    <%= f.label :youtubelink %>
+    <%= f.text_field :youtubelink %>
+  </div>
+
+  <div class="field">
+    <%= f.label :subheading_color %>
+    <%= f.text_field :subheading_color %>
+  </div>
+
+  <div class="field">
+    <%= f.label :footer_color %>
+    <%= f.text_field :footer_color %>
+  </div>
+
+  <div class="field">
+    <%= f.label :footer_text_color %>
+    <%= f.text_field :footer_text_color %>
+  </div>
+
   <div class="field">
     <%= f.label :phone %>
     <%= f.text_field :phone %>
@@ -58,20 +91,7 @@
     <%= f.text_field :zipcode %>
   </div>
 
-   <div class="field">
-    <%= f.label :facebooklink %>
-    <%= f.text_field :facebooklink %>
-  </div>
-
-   <div class="field">
-    <%= f.label :twitterlink %>
-    <%= f.text_field :twitterlink %>
-  </div>
-
-   <div class="field">
-    <%= f.label :youtubelink %>
-    <%= f.text_field :youtubelink %>
-  </div>
+   
 
    <div class="field">
     <%= f.label :template_csses_id %>

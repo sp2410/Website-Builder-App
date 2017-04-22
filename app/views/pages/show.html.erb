@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
+<%= render 'websites/websitenavbar'%>
+<%= render 'websites/css'%>
 
-<p>
-  <strong>Title:</strong>
-  <%= @page.title %>
-</p>
+<%= render 'pages/contents', page: @page %>
 
-<%= link_to 'Edit', edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>
+<%= render 'websites/websitefooter'%>
+

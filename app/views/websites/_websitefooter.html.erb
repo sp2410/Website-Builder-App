@@ -1,0 +1,131 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"  lazyload>
+<div class="container" id = "custom"  style="background-color: <%= @website.footer_color if @website.footer_color.present? %>">     
+  <div class="row">
+    <div class = "headerdiv" style="background-color: <%= @website.footer_color if @website.footer_color.present? %>">
+
+    <div class="col-lg-12 col-sm-12">   
+          <div class="col-lg-12 col-sm-12" style = "text-align:center; margin-bottom: 50px;">
+            <h1 style = "color: <%= @website.footer_text_color if @website.footer_text_color.present? %>" >OUR LOCATION</h1>
+          </div>
+
+
+      <div class="col-md-4 col-sm-12" style = "margin-top: 50px;">
+        <ul class="list-unstyled" style = "text-align:center;color: #fff; font-size: 10px;">
+          <li><h2 style = "color: <%= @website.footer_text_color if @website.footer_text_color.present? %>" >OUR TIMINGS</h2></li>
+          
+          <% @times.each do |time|%>                    
+            <li><p style = "color: <%= @website.footer_text_color if @website.footer_text_color.present? %>"><%= time.day.upcase %> : <%= time.start_time.strftime("%I:%M%p") %> -  <%= time.end_time.strftime("%I:%M%p") %> <%= link_to "(Edit)", edit_website_timetable_path(@website.id, time.id), style:"color:  #{@website.footer_text_color if @website.footer_text_color.present?}; font-size: 10px;" %></p> </li>            
+          <% end %>
+
+          <li><h3><%= link_to 'Add A Day', new_website_timetable_path(@website.id), class: "btn btn-default btn-xs" %></h3></li>
+        </ul>
+      </div>
+
+      <!-- <button type="button" class="btn btn-primary btn-xs">XSmall</button> -->
+
+
+
+      <div class="col-md-4 col-sm-12" style = "margin-top: 50px;">
+        <ul class="list-unstyled" style = "text-align:center;color: <%= @website.footer_text_color if @website.footer_text_color.present? %>; font-size: 10px;">
+          <li><h2><%= @website.title.upcase %></h2></li>
+          <li><p><%= @website.city %></p></li>
+          <li><p><%= @website.state %></p></li>
+          <li><p>Call Us: <%= @website.phone %></p></li>          
+        </ul>
+      </div>
+
+
+      <div class="col-md-4 col-sm-12" style = "text-align:center;">          
+          <div id="map" style = "outline: 5px solid  <%= @website.footer_text_color if @website.footer_text_color.present? %>;"></div>
+            <script>
+              function initMap() {     
+                //   converting instance variable to json data
+                var json = <%= raw @website.to_json %>;  
+
+                //initialising map with center Washington DC  
+                
+                var mycenter = {lat: json.latitude, lng: json.longitude};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 6,
+                  center: mycenter,
+
+                  //adding style to the map
+                  styles: [{"featureType":"water","elementType":"all","stylers":[{"hue":"#7fc8ed"},{"saturation":55},{"lightness":-6},{"visibility":"on"}]},{"featureType":"water","elementType":"labels","stylers":[{"hue":"#7fc8ed"},{"saturation":55},{"lightness":-6},{"visibility":"off"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"hue":"#83cead"},{"saturation":1},{"lightness":-15},{"visibility":"on"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"hue":"#f3f4f4"},{"saturation":-84},{"lightness":59},{"visibility":"on"}]},{"featureType":"landscape","elementType":"labels","stylers":[{"hue":"#ffffff"},{"saturation":-100},{"lightness":100},{"visibility":"off"}]},{"featureType":"road","elementType":"geometry","stylers":[{"hue":"#ffffff"},{"saturation":-100},{"lightness":100},{"visibility":"on"}]},{"featureType":"road","elementType":"labels","stylers":[{"hue":"#bbbbbb"},{"saturation":-100},{"lightness":26},{"visibility":"on"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"hue":"#ffcc00"},{"saturation":100},{"lightness":-35},{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"hue":"#ffcc00"},{"saturation":100},{"lightness":-22},{"visibility":"on"}]},{"featureType":"poi.school","elementType":"all","stylers":[{"hue":"#d7e4e4"},{"saturation":-60},{"lightness":23},{"visibility":"on"}]}]
+                });
+
+                //
+                
+
+                //adding markers from json data
+                //for (var i=0; i<json.length; i++){
+                  var data =  json;
+                  // var a = 360.0 / json.length;
+                  // var newLat = data.latitude + -.00004 * Math.cos((+a*i) / 180 * Math.PI);
+                  // var newLng = data.longitude + -.00004 * Math.sin((+a*i) / 180 * Math.PI);
+
+                  latLng = new google.maps.LatLng(data.latitude, data.longitude);
+
+                  var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    icon:"https://s3-us-west-2.amazonaws.com/wacbacassetsdonttouch/wacbacassets/repair.png",
+                    //icon: "https://s3-us-west-2.amazonaws.com/wacbacassetsdonttouch/wacbacassets/car32.png",
+                    title: data.title          
+                  });
+
+               
+                // (function(marker, data) {
+
+                //   // Attaching a click event to the current marker
+                //   google.maps.event.addListener(marker, "click", function(e) {
+                //         var go_to = "/repairshops/" + data.id;
+                //       //window.location.href = go_to;
+                //         location.href = go_to;
+                //   });
+
+                // })(marker, data);
+
+
+                //}
+              }
+
+
+            </script>
+
+           <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2alMtLSazyRllBkXIJfitgKwvc9zxYTo&callback=initMap">
+          </script>
+
+      </div>  
+
+
+    </div>
+    </div>
+  </div>
+
+
+  <hr>
+
+  
+    <div class="col-lg-12">
+     
+      <div class="col-md-4" style="color: #fff; text-align:center;">
+        <p style = "font-size: 10px;color: <%= @website.footer_text_color if @website.footer_text_color.present? %> ">© <%= Time.now.year %> - <%= @website.title %> All rights reserved</p>
+      </div>
+
+      <div class="col-md-4" style="color: #fff; text-align:center;">
+        <p style = "font-size: 10px;color: <%= @website.footer_text_color if @website.footer_text_color.present? %>"> This Website was Created with <%= link_to 'TDC WEB-BUILD', @website, style:"color: #{@website.footer_text_color if @website.footer_text_color.present?}; font-size: 10px;" %>
+          </p>
+      </div>
+
+       <div class="col-md-4" >
+        <p  style = "color: <%= @website.footer_text_color if @website.footer_text_color.present? %>; font-size: 10px; text-align:center;">@<%= Time.now.year %> - <%= link_to " TDC Digital Media", 'http://www.tdcdigitalmedia.com', style:"color: #{@website.footer_text_color if @website.footer_text_color.present?}; font-size: 10px;" %> </p>
+      </div>
+
+
+    </div>
+  
+</div>
+
+
+
