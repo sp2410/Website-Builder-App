@@ -9,7 +9,7 @@ class PageSectionsController < ApplicationController
 
   # GET /page_sections/1
   # GET /page_sections/1.json
-  def show
+  def show    
   end
 
   # GET /page_sections/new
@@ -23,13 +23,16 @@ class PageSectionsController < ApplicationController
 
   # POST /page_sections
   # POST /page_sections.json
-  def create
-    @page_section = PageSection.new(page_section_params)
+  def create    
+    @website = Website.find_by_id(params[:website_id])
+    @page = Page.find_by_id(params[:page_id])
+    @page_section = PageSection.new page_section_params.merge! page_id: @page.id
+    
 
     respond_to do |format|
       if @page_section.save
-        format.html { redirect_to @page_section, notice: 'Page section was successfully created.' }
-        format.json { render :show, status: :created, location: @page_section }
+        format.html { redirect_to website_page_path(@website.id,@page.id), notice: 'Page section was successfully created.' }
+        format.json { render :show, status: :created, location:website_page_path(@website.id,@page.id)}
       else
         format.html { render :new }
         format.json { render json: @page_section.errors, status: :unprocessable_entity }
@@ -42,8 +45,8 @@ class PageSectionsController < ApplicationController
   def update
     respond_to do |format|
       if @page_section.update(page_section_params)
-        format.html { redirect_to @page_section, notice: 'Page section was successfully updated.' }
-        format.json { render :show, status: :ok, location: @page_section }
+        format.html { redirect_to website_page_path(@website.id,@page.id), notice: 'Page section was successfully updated.' }
+        format.json { render :show, status: :ok, location: @page }
       else
         format.html { render :edit }
         format.json { render json: @page_section.errors, status: :unprocessable_entity }
@@ -56,7 +59,7 @@ class PageSectionsController < ApplicationController
   def destroy
     @page_section.destroy
     respond_to do |format|
-      format.html { redirect_to page_sections_url, notice: 'Page section was successfully destroyed.' }
+      format.html { redirect_to website_page_path(@website.id,@page.id), notice: 'Page section was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,10 +68,13 @@ class PageSectionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_page_section
       @page_section = PageSection.find(params[:id])
+      @page = Page.find(params[:page_id])
+      @website = Website.find_by_id(params[:website_id])      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_section_params
-      params.require(:page_section).permit(:title)
+      params.require(:page_section).permit(:number_of_elements,:background_color,:page_id)
     end
 end
+

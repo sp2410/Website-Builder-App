@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @page_section.title %>
+
+<p>  
+  <%= @page_section %>
 </p>
 
-<%= link_to 'Edit', edit_page_section_path(@page_section) %> |
-<%= link_to 'Back', page_sections_path %>
+<%= link_to 'Edit', edit_page_section_path(,@page_section),class: "btn btn-default btn-xs" %> |
+<%= link_to 'Back', page_sections_path,class: "btn btn-default btn-xs" %>

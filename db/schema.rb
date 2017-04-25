@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422210244) do
+ActiveRecord::Schema.define(version: 20170424231658) do
 
   create_table "messages", force: :cascade do |t|
     t.string   "name"
@@ -23,14 +23,12 @@ ActiveRecord::Schema.define(version: 20170422210244) do
   end
 
   create_table "page_sections", force: :cascade do |t|
-    t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "pages_id"
-    t.string   "header"
-    t.string   "paragraph"
-    t.string   "image"
-    t.index ["pages_id"], name: "index_page_sections_on_pages_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "number_of_elements"
+    t.string   "background_color"
+    t.integer  "page_id"
+    t.index ["page_id"], name: "index_page_sections_on_page_id"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -45,6 +43,20 @@ ActiveRecord::Schema.define(version: 20170422210244) do
     t.string   "subheader_color"
     t.string   "page_color"
     t.index ["website_id"], name: "index_pages_on_website_id"
+  end
+
+  create_table "sectiontypes", force: :cascade do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "page_section_id"
+    t.string   "widget_type"
+    t.string   "title"
+    t.string   "type_url"
+    t.string   "font_type"
+    t.string   "details"
+    t.string   "image_border"
+    t.string   "text_color"
+    t.index ["page_section_id"], name: "index_sectiontypes_on_page_section_id"
   end
 
   create_table "template_csses", force: :cascade do |t|

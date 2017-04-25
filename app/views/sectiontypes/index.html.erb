@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sectiontypes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sectiontypes.each do |sectiontype| %>
+      <tr>
+        <td><%= link_to 'Show', sectiontype %></td>
+        <td><%= link_to 'Edit', edit_sectiontype_path(sectiontype) %></td>
+        <td><%= link_to 'Destroy', sectiontype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sectiontype', new_sectiontype_path %>

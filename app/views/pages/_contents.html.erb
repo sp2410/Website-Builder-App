@@ -6,6 +6,72 @@
 	  <%= page.subheader.upcase if page.subheader.present? %>
 	</h3>
 
-	<%= link_to 'Edit', edit_website_page_path(@website.id, page.id) %>	
+	<div class="col-md-12 text-center" style = "margin-bottom: 5px;">
+		<%= link_to 'Add Page Section', new_website_page_page_section_path(@website.id, page.id),class: "btn btn-default btn-xs" %>	
+
+		<%= link_to 'Edit Page', edit_website_page_path(@website.id, page.id),class: "btn btn-default btn-xs" %>
+
+		<%= link_to "Delete Page", website_page_path(@website.id, page.id), :confirm => "Are you sure you want to delete this Page?", :method => :delete,class: "btn btn-default btn-xs"  %>
+	</div>
+
+	<% sections.each do |section| %>
+
+		<div class="col-md-12 text-center" style = "background-color: <%= section.background_color if section.background_color %>; ">	
+
+			<div class="col-md-12 text-center" style = "margin-bottom: 5px;">
+				
+				<%= link_to 'Edit Section', edit_website_page_page_section_path(@website.id, page.id, section.id),class: "btn btn-default btn-xs" %>
+			</div>
+
+
+			<% section.sectiontypes.each do |widget| %>
+
+			<!-- Main Logic for  distributing elements -->					
+
+				<div class="col-md-<%= (12/section.number_of_elements.to_i) %> text-center" style = "color:<%= page.header_color %>" >
+
+					<%= link_to 'Edit Widget', edit_website_page_page_section_sectiontype_path(@website.id, page.id, section.id,widget.id),class: "btn btn-default btn-xs" %>					
+
+					<%= link_to "Delete Widget", website_page_page_section_sectiontype_path(@website.id, page.id, section.id,widget.id), :confirm => "Are you sure you want to delete this Widget?", :method => :delete, class: "btn btn-default btn-xs" %>			
+
+					<%- if widget.widget_type.to_s == "Paragraph" -%>
+
+						<h2 style = "color: <%= widget.text_color if  widget.text_color.present? %>;" ><%= widget.title if widget.title.present? %></h2>
+						<p style = "color: <%= widget.text_color if  widget.text_color.present? %>;" ><%= widget.details if widget.details.present? %></p>
+
+					<%- elsif widget.widget_type.to_s == "Image" -%>
+
+						<h2 style = "color: <%= widget.text_color if widget.text_color.present? %>;"><%= widget.title if widget.title.present? %></h2>
+
+						<%= image_tag widget.type_url,  :style => "margin-bottom: 5px; height: 70%; width: 100%; outline: 2px solid #{widget.image_border if widget.image_border.present? }" %>		
+
+
+						
+
+
+					<%- elsif widget.widget_type.to_s == "Video" -%>						
+
+						<iframe width="100px;" height="100px;" src="http://www.youtube.com/embed/#{widget.type_url if widget.type_url.present? }" frameborder="1"></iframe>
+						
+
+					<% end %>
+
+				</div>
+
+			<% end %>	
+			
+			<div class="col-md-12 text-center" style = "margin-bottom: 5px;">
+
+				<%= link_to 'Add Widget to this section', new_website_page_page_section_sectiontype_path(@website.id, page.id, section.id),class: "btn btn-default btn-xs" %>	
+				
+				<%= link_to "Delete Section", website_page_page_section_path(@website.id, page.id, section.id), :confirm => "Are you sure you want to delete this Section?", :method => :delete, class: "btn btn-default btn-xs"  %> 							
+			</div>
+
+		</div>
+
+		
+
+	<% end %>
 	
+
 </div>

@@ -1,0 +1,2 @@
+module SectiontypesHelper
+end

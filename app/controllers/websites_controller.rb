@@ -12,7 +12,7 @@ class WebsitesController < ApplicationController
   def show
     @websitepages = @website.pages
     @pages = @websitepages.where(:show_page_on_index => true)
-    @times = @website.timetables
+    @times = @website.timetables    
   end
 
   # GET /websites/new

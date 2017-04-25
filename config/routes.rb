@@ -1,6 +1,6 @@
 Rails.application.routes.draw do  
   
-  
+ 
 	resources :template_csses
 
 
@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 		resources :messages
 
 		resources :pages do 
-			resources :page_sections
+			resources :page_sections do 
+				resources :sectiontypes
+			end
 		end
 	end
 
