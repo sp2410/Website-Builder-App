@@ -54,6 +54,7 @@
       
       </div>
 
+    <%= @website.to_json %>
 
       <div class="col-md-4 col-sm-12" style = "text-align:center;">          
           <div id="map" style = "outline: 5px solid  <%= @website.footer_text_color if @website.footer_text_color.present? %>;"></div>
@@ -63,9 +64,9 @@
                 //   converting instance variable to json data
                 var json = <%= raw @website.to_json %>;  
 
-                //initialising map with center Washington DC  
                 
-                var mycenter = {lat: json.latitude, lng: json.longitude};
+                
+                var mycenter = {lat: parseFloat(json.latitude), lng: parseFloat(json.longitude)};
                 var map = new google.maps.Map(document.getElementById('map'), {
                   zoom: 6,
                   center: mycenter,
@@ -84,7 +85,7 @@
                   // var newLat = data.latitude + -.00004 * Math.cos((+a*i) / 180 * Math.PI);
                   // var newLng = data.longitude + -.00004 * Math.sin((+a*i) / 180 * Math.PI);
 
-                  latLng = new google.maps.LatLng(data.latitude, data.longitude);
+                  latLng = new google.maps.LatLng(parseFloat(data.latitude), parseFloat(data.longitude));
 
                   var marker = new google.maps.Marker({
                     position: latLng,
