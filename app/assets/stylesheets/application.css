@@ -176,7 +176,7 @@ blockquote h3:after {
 	display:inline-block;
 	width: 30%;				
 	min-height: 217px;	
-	background-image: url("file.svg");
+	background-image: url("https://s3-us-west-2.amazonaws.com/wacbacassetsdonttouch/wacbacassets/file.svg");
 	background-repeat:no-repeat;
     background-size:contain;
 
