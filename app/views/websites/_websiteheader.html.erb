@@ -19,10 +19,10 @@
 			<a href= <%="https://#{@website.facebooklink}" %>> <i class=" fa fa-facebook"></i> </a>
 		    <a href=<%="https://#{@website.youtubelink}" %>> <i class=" fa fa-youtube"></i> </a>
 		    <a href=<%="https://#{@website.twitterlink}" %>> <i class=" fa fa-twitter"></i> </a>
-		</div>
+		</div>		
 				
 		<div class="col-md-12 text-center" style = "margin-top: 1%;" > 
-		    <%= link_to "#{@website.phone if @website.phone}", @website, class: "btn btn-default " %>		    
+			<a href="tel:<%= @website.phone if @website.phone %>" class="btn btn-default">CALL US</a>		    
 		</div>
 		
 
