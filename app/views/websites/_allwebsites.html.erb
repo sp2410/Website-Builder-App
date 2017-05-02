@@ -1,0 +1,17 @@
+<div class="headerdiv1" style = "margin-left:auto; 
+    margin-right:auto;">
+<h1 style = "text-align: center; margin-top: 40px;font-size: 90px; color: #ee0979;" >LIVE WEBSITES</h1>
+
+
+    <% @websites.each do |website| %>    
+      <div class="card1" >        
+        <%= link_to website do %>                  
+                  <% if website.logo.present? %>
+                    <%= image_tag website.logo %>
+                  <% else %>
+                    <%= image_tag("https://s3-us-west-2.amazonaws.com/wacbacassetsdonttouch/wacbacassets/nopictures.png", :alt => "want a car buy a car")  %>
+                  <% end %>                         
+        <% end %>        
+      </div>      
+    <% end %>
+</div>

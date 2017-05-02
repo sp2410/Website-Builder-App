@@ -24,12 +24,31 @@
 		<div class="col-md-12 text-center" style = "margin-top: 1%;" > 
 		    <%= link_to "#{@website.phone if @website.phone}", @website, class: "btn btn-default " %>		    
 		</div>
-		<div class="col-md-12 text-center" style = "margin-top: 1%;" > 
-			<h3><%= link_to 'SEND A MESSAGE', new_website_message_path(@website.id), class: "btn btn-primary" %></h3>
-		</div>
 		
-		<div class="col-md-12 text-center" style = "margin-top: 1%;"> 
-			<h4><%= link_to 'Edit Website', edit_website_path(@website),class: "btn btn-default btn-xs" %></h4>
-		</div>
+
+		<%- if user_signed_in? -%>		
+			<%- if @website.user_id == current_user.id -%>
+
+				<div class="col-md-12 text-center" style = "margin-top: 1%;" > 
+					<h3><%= link_to 'VIEW YOUR MESSAGES', website_messages_path(@website.id), class: "btn btn-primary" %></h3>
+				</div>
+			
+				<div class="col-md-12 text-center" style = "margin-top: 1%;"> 
+					<h4><%= link_to 'Edit Website', edit_website_path(@website),class: "btn btn-default btn-xs" %></h4>
+				</div>
+
+			<% else %>
+
+				<div class="col-md-12 text-center" style = "margin-top: 1%;" > 
+					<h3><%= link_to 'SEND A MESSAGE', new_website_message_path(@website.id), class: "btn btn-primary" %></h3>
+				</div>
+			<% end %>
+
+		<% else %>
+			<div class="col-md-12 text-center" style = "margin-top: 1%;" > 
+				<h3><%= link_to 'SEND A MESSAGE', new_website_message_path(@website.id), class: "btn btn-primary" %></h3>
+			</div>
+			
+		<% end %>
 	
 </div>

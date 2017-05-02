@@ -38,6 +38,16 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'hirb'
 gem 'geocoder'
+gem 'devise'
+
+gem 'bootstrap_form'
+
+gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick', '~> 4.3'
+
+gem "fog"
+
+gem 'figaro'
 
 
 group :development, :test do
@@ -48,8 +58,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'web-console', '>= 3.3.0'  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

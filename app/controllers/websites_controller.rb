@@ -1,11 +1,24 @@
 class WebsitesController < ApplicationController
   before_action :set_website, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new,:create,:edit, :update, :destroy]
 
   # GET /websites
   # GET /websites.json
   def index
+    @background = "//s3-us-west-2.amazonaws.com/wacbacassetsdonttouch/wacbacassets/background.jpeg"
+    #@background = "//encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY40MEW3LWZpDmQW6T0NleSjCTeC-uQskZfFooefmazsBZvRua-GAJdOk"
+    @websites = Website.all.limit(12)
+    @template_csses = TemplateCss.all.limit(12)
+  end
+
+  def mywebsites
+    @websites = Website.where('user_id = ?', current_user.id)
+  end
+
+  def showall
     @websites = Website.all
   end
+
 
   # GET /websites/1
   # GET /websites/1.json
@@ -27,7 +40,8 @@ class WebsitesController < ApplicationController
   # POST /websites
   # POST /websites.json
   def create
-    @website = Website.new(website_params)      
+    @website = Website.new(website_params)  
+    @website.user_id = current_user.id
 
     respond_to do |format|
       if @website.save
@@ -75,9 +89,10 @@ class WebsitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def website_params
-      params.require(:website).permit(:title,:logo,:mainimage,:subheading,:title_color, :subheading_color, :footer_color, :footer_text_color,:phone,:city,:state,:zipcode,:facebooklink,:twitterlink,:youtubelink,:template_csses_id)
+      params.require(:website).permit(:title,:logo,:mainimage,:subheading,:title_color, :subheading_color, :footer_color, :footer_text_color,:phone,:city,:state,:zipcode,:facebooklink,:twitterlink,:youtubelink,:template_csses_id,:user_id)
     end
 end
+
 
 
 

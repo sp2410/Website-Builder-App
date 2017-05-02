@@ -1,4 +1,5 @@
-<%= form_for page_section, :url => {:action => 'create'} do |f| %>
+<div class="col-md-12 text-center">
+<%= bootstrap_form_for page_section, :url => {:action => 'create'} do |f| %>
   <% if page_section.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(page_section.errors.count, "error") %> prohibited this page_section from being saved:</h2>
@@ -13,12 +14,12 @@
 
 
    <div class="field">
-    <%= f.label :number_of_elements %>
+    
     <%= f.text_field :number_of_elements %>
   </div>
 
    <div class="field">
-    <%= f.label :background_color %>
+    
     <%= f.text_field :background_color %>
   </div>
 
@@ -26,3 +27,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+</div>

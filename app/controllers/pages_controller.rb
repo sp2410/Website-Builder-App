@@ -10,7 +10,7 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
-    @website = Website.find_by_id(@page.website_id)
+    @website = Website.find_by_id(@page.website_id)    
     @websitepages = @website.pages        
     @times = @website.timetables
     @sections = @page.page_sections    

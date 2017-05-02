@@ -1,27 +1,15 @@
+<%= render "layouts/navbar" %>
 <p id="notice"><%= notice %></p>
 
-<h1>Template Csses</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= render "template_csses/templatecss" %>
 
-  <tbody>
-    <% @template_csses.each do |template_css| %>
-      <tr>
-        <td><%= template_css.name %></td>
-        <td><%= link_to 'Show', template_css %></td>
-        <td><%= link_to 'Edit', edit_template_css_path(template_css) %></td>
-        <td><%= link_to 'Destroy', template_css, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div class="col-md-12 col-sm-12" style = "text-align:center;">
+	<%= link_to 'NEW TEMPLATE', new_template_css_path,class: "btn btn-primary" %>
+</div>
 <br>
 
-<%= link_to 'New Template Css', new_template_css_path %>
+
+<div class="headerdiv1" id = "custom1" style = "margin: 12px 0px 0px 0px; min-height: 100px;">
+    <%= render "layouts/footer" %>
+</div>

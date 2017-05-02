@@ -1,4 +1,5 @@
-<%= form_for sectiontype, :url => {:action => 'update'} do |f| %>
+<div class="col-md-12 text-center">
+<%= bootstrap_form_for sectiontype, :url => {:action => 'update'} do |f| %>
   <% if sectiontype.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(sectiontype.errors.count, "error") %> prohibited this sectiontype from being saved:</h2>
@@ -13,37 +14,37 @@
 
 
   <div class="field">
-    <%= f.label :widget_type %>
+    
     <%= f.select :widget_type, ['Paragraph', 'Image','Video'] %>
   </div>
 
     <div class="field">
-    <%= f.label :title, "Title:" %>
+    
     <%= f.text_field :title %>
   </div>
 
     <div class="field">
-    <%= f.label :type_url, "URL: specify the URL of the Image/Video"  %>
+    
     <%= f.text_field :type_url %>
   </div>
 
     <div class="field">
-    <%= f.label :font_type,"Font Style: (Fill if Type is Paragraph)" %>
+    
     <%= f.text_field :font_type %>
   </div>
 
   <div class="field">
-    <%= f.label :details,"Details: (Fill if Type is Paragraph)" %>
+    
     <%= f.text_area :details %>
   </div>
 
     <div class="field">
-    <%= f.label :image_border,"Image Border Color: (Fill if Image or Video)" %>
+    
     <%= f.text_field :image_border %>
   </div>
 
   <div class="field">
-    <%= f.label :text_color,"Text Color: (Fill if Type is Paragraph)" %>
+    
     <%= f.text_field :text_color %>
   </div>
 
@@ -56,3 +57,4 @@
 
 <% end %>
 
+</div>

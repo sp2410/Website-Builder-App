@@ -1,4 +1,5 @@
 class Website < ApplicationRecord
+	belongs_to :user
 	has_many :pages	
 	has_many :timetables
 	has_one :social_medialinks
@@ -18,11 +19,14 @@ class Website < ApplicationRecord
 
 	def self.create_home_page(website)
 		
-		home = Page.find_or_create_by(title: "home", show_page_on_index: true) 		
+		home = Page.find_or_create_by(title: "home", website_id: website.id, show_page_on_index: true) 	
+		#home = Page.find_or_create_by_title_and_website_id(title: "home", website_id: website.id, show_page_on_index: true)	
+
 		home.website_id = website.id
 		home.save!
 
-		inventory = Page.find_or_create_by(title: "inventory", show_page_on_index: true) 
+		inventory = Page.find_or_create_by(title: "inventory", website_id: website.id, show_page_on_index: true) 
+		#inventory = Page.find_or_create_by_title_and_website_id(title: "inventory", website_id: website.id, show_page_on_index: true)	
 		inventory.website_id = website.id
 		inventory.save!		
 

@@ -10,21 +10,54 @@
 
 
       <ul class="nav navbar-nav navbar-right">             
-
+        <li>
+            <%= link_to "MAIN", website_path(@website.id) %>
+        </li>
 
         <% @websitepages.each do |nav| %>  
+          
           <li>
-            <%= link_to "#{nav.title.upcase}", website_page_path(@website.id,nav.id) %>
+            <%- if user_signed_in? -%>
+              <%- if @website.user_id == current_user.id -%>
+                <%= link_to "#{nav.title.upcase}", website_page_path(@website.id,nav.id) %>
+              <% else %> 
+                <%-if nav.title.upcase.to_s != "HOME"-%>
+                  <%= link_to "#{nav.title.upcase}", website_page_path(@website.id,nav.id) %>
+                <% end %>  
+              <% end %>
+            <% else %>
+              <%-if nav.title.upcase.to_s != "HOME"-%>
+                  <%= link_to "#{nav.title.upcase}", website_page_path(@website.id,nav.id) %>
+                <% end %>  
+            <% end %>
+          </li>
+
+        <% end %> 
+
+        <%- if user_signed_in? -%>
+          <%- if @website.user_id == current_user.id -%>
+
+            <li>
+                <%= link_to "VIEW YOUR INBOX", website_messages_path(@website.id) %>
+            </li>
+
+             <li>
+              <%= link_to 'ADD A PAGE', new_website_page_path(@website.id) %>
+            </li>
+
+          <% end %> 
+        <% end %> 
+
+        <% if current_user %>                     
+          <li>
+            <%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "SIGN IN", new_user_session_path %>
           </li>
         <% end %> 
 
-        <li>
-            <%= link_to "VIEW YOUR INBOX", website_messages_path(@website.id) %>
-        </li>
-
-        <li>
-          <%= link_to 'ADD A PAGE', new_website_page_path(@website.id) %>
-        </li> 
 
       </ul>
       
@@ -33,5 +66,6 @@
     </div>
   </div>
 </nav>
+
 
 

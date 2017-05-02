@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424231658) do
+ActiveRecord::Schema.define(version: 20170425001545) do
 
   create_table "messages", force: :cascade do |t|
     t.string   "name"
@@ -25,10 +25,12 @@ ActiveRecord::Schema.define(version: 20170424231658) do
   create_table "page_sections", force: :cascade do |t|
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "pages_id"
     t.string   "number_of_elements"
     t.string   "background_color"
     t.integer  "page_id"
     t.index ["page_id"], name: "index_page_sections_on_page_id"
+    t.index ["pages_id"], name: "index_page_sections_on_pages_id"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -76,6 +78,23 @@ ActiveRecord::Schema.define(version: 20170424231658) do
     t.index ["website_id"], name: "index_timetables_on_website_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
   create_table "websites", force: :cascade do |t|
     t.string   "title"
     t.string   "logo"
@@ -98,7 +117,9 @@ ActiveRecord::Schema.define(version: 20170424231658) do
     t.string   "subheading_color"
     t.string   "footer_color"
     t.string   "footer_text_color"
+    t.integer  "user_id"
     t.index ["template_csses_id"], name: "index_websites_on_template_csses_id"
+    t.index ["user_id"], name: "index_websites_on_user_id"
   end
 
 end
