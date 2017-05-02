@@ -25,12 +25,10 @@ ActiveRecord::Schema.define(version: 20170425001545) do
   create_table "page_sections", force: :cascade do |t|
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.integer  "pages_id"
     t.string   "number_of_elements"
     t.string   "background_color"
     t.integer  "page_id"
     t.index ["page_id"], name: "index_page_sections_on_page_id"
-    t.index ["pages_id"], name: "index_page_sections_on_pages_id"
   end
 
   create_table "pages", force: :cascade do |t|
