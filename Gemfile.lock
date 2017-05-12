@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/rails/activeresource.git
+  revision: 3cb045d1bea4c0e3a80a55171eca85abd88bef8b
+  branch: master
+  specs:
+    activeresource (5.0.0)
+      activemodel (>= 5.0, < 6)
+      activemodel-serializers-xml (~> 1.0)
+      activesupport (>= 5.0, < 6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -30,6 +40,11 @@ GEM
       globalid (>= 0.3.6)
     activemodel (5.0.2)
       activesupport (= 5.0.2)
+    activemodel-serializers-xml (1.0.1)
+      activemodel (> 5.x)
+      activerecord (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (5.0.2)
       activemodel (= 5.0.2)
       activesupport (= 5.0.2)
@@ -201,6 +216,8 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     hirb (0.7.3)
+    httparty (0.15.0)
+      multi_xml (>= 0.5.2)
     i18n (0.8.1)
     inflecto (0.0.2)
     ipaddress (0.8.3)
@@ -224,6 +241,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
+    multi_xml (0.6.0)
     nio4r (2.0.0)
     nokogiri (1.7.1-x86-mingw32)
       mini_portile2 (~> 2.1.0)
@@ -330,6 +348,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  activeresource!
   bootstrap_form
   byebug
   carrierwave (~> 0.10.0)
@@ -339,6 +358,7 @@ DEPENDENCIES
   fog
   geocoder
   hirb
+  httparty
   jbuilder (~> 2.5)
   jquery-rails
   mini_magick (~> 4.3)

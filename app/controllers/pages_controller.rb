@@ -13,7 +13,15 @@ class PagesController < ApplicationController
     @website = Website.find_by_id(@page.website_id)    
     @websitepages = @website.pages        
     @times = @website.timetables
-    @sections = @page.page_sections    
+    @sections = @page.page_sections
+
+    if (@page.title == "inventory")
+      @newlisting = Listing.new("https://fierce-sea-43472.herokuapp.com/categories.json")
+      @listings = @newlisting.getresponse((User.find_by_id(@website.user_id).email).to_s)      
+      #@listings = @newlisting.getresponse("bob@gmail.com")            
+      #@listings = @newlisting.getresponse("admin@gmail.com")      
+    end
+
   end
 
   # GET /pages/new
