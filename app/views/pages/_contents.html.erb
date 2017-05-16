@@ -27,8 +27,8 @@
 		<h3 style ="color: <%= @website.footer_text_color if @website.footer_text_color.present? %>;">	  
 		  OUR INVENTORY
 		</h3>
-		<h6 style ="color: <%= @website.footer_text_color if @website.footer_text_color.present? %>;">	  
-		  ( Inventory Management Powered by: <a href = "https://fierce-sea-43472.herokuapp.com/"> Want A Car Buy A Car </a> )
+		<p style ="color: <%= @website.footer_text_color if @website.footer_text_color.present? %>; font-size: 10px;">	  
+		  ( Automatic Inventory Management Powered by: <a href = "https://fierce-sea-43472.herokuapp.com/"> Want A Car Buy A Car </a> )
 		</h6>
 	
 		<div class="scrollbar" id="style-1" style="overflow-y:scroll; overflow-x:hidden; height:600px;">
@@ -45,7 +45,7 @@
 			            <div class="row">
 			              <div class="col-sm-6">
 			              	<h4 class="row text-center"><%= i["title"].upcase %></h4>
-			              	<h4 class="row text-center" style = "font-size: 12px;">Description: <%= i["description"] %></h4>
+			              	<h4 class="row text-center" style = "font-size: 12px;">Description: <%= i["description"].downcase %></h4>
 			              	<h4 class="row text-center" style ="font-size: 10px;">VIN: <%= i["vin"] %></h4>
 			              </div>
 
