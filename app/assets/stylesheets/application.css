@@ -446,7 +446,8 @@ table.center {
 
 
 .gradient {
-  height: 70%;      
+  height: 60%;      
+  background-color: #555;
 }
 
 .wrap {
