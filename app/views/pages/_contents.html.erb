@@ -27,6 +27,9 @@
 		<h3 style ="color: <%= @website.footer_text_color if @website.footer_text_color.present? %>;">	  
 		  OUR INVENTORY
 		</h3>
+		<h6 style ="color: <%= @website.footer_text_color if @website.footer_text_color.present? %>;">	  
+		  ( Inventory Management Powered by: <a href = "https://fierce-sea-43472.herokuapp.com/"> Want A Car Buy A Car </a> )
+		</h6>
 	
 		<div class="scrollbar" id="style-1" style="overflow-y:scroll; overflow-x:hidden; height:600px;">
 			
@@ -64,8 +67,7 @@
 			    </div>
 			  </div>
 			</div>				
-			<% end %>				
-				
+			<% end %>									
 		</div>
 
 	<% else %>
