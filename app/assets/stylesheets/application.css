@@ -452,7 +452,7 @@ table.center {
 .wrap {
   width: 80%;
   position: relative;
-  margin: 0 auto 0 auto;
+  margin: 2px auto 0 auto;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
