@@ -37,14 +37,20 @@
 				
 					<div class="wrap">
 					    <div class="card" style = "outline: 5px solid  <%= @website.footer_text_color if @website.footer_text_color.present? %>;">			      
-					        <div class="price"><%= i["price"] %><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></div>
+					        <div class="price"><%= i["price"] %><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></div>       
+
 					        <div class="image" style = "background-image: url(<%= i["image"]["url"] if i["image"]["url"].present? %>);background-repeat:no-repeat; background-size:100% 100%; "></div>
+
 					        <div class="description">
 					            <div class="row">
 					              <div class="col-sm-6">
 					              	<h4 class="row text-center"><%= i["title"].upcase %></h4>
 					              	<h4 class="row text-center" style = "font-size: 12px;">Description: <%= i["description"].downcase %></h4>
 					              	<h4 class="row text-center" style ="font-size: 10px;">VIN: <%= i["vin"] %></h4>
+					              	<div class="col-sm-12">					              				
+					              		<%= social_share_button_tag(i["title"].upcase, :url => "#{@website_path}", :image => i["image"]["url"], desc: i["description"]) %>
+
+									</div>
 					              </div>
 
 					              <div class="col-sm-3"  >							
