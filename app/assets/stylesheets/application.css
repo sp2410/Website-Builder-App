@@ -450,6 +450,8 @@ table.center {
 
 .gradient {  
   min-height: 500px;    
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 .wrap {
@@ -459,6 +461,10 @@ table.center {
 }
 
 @media (min-width:800px) {
+  .gradient {  
+    min-height: 320px;    
+  }
+
   .wrap {
   width: 50%;
   margin: 50px auto;
@@ -467,7 +473,7 @@ table.center {
 
 .card {
   position: relative;
-  margin: 0px auto;
+  margin: 10px auto;
   background-color: #fff;  
   box-shadow: 0px 1px 5px #999;
   overflow: hidden;
