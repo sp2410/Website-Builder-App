@@ -446,19 +446,19 @@ table.center {
 
 
 .gradient {  
-  min-height: 600px;
+  min-height: 600px;  
 }
 
 .wrap {
   width: 80%;
   position: relative;
-  margin: 10px auto;
-  top: 50%;
+  margin: 10px auto;  
   
 }
 @media (min-width:800px) {
   .wrap {
   width: 50%;
+  margin: 50px auto;
   }
 }
 
@@ -477,7 +477,7 @@ table.center {
   background-size: cover;
   position: center;
   background-repeat: no-repeat;
-  min-height: 300px;
+  min-height: 300px;  
   transition: all .5s ease-in-out;
   &:hover {
     transform: rotate(-3deg) scale(1.1);

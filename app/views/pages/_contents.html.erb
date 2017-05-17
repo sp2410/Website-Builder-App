@@ -31,44 +31,42 @@
 		  ( Automatic Inventory Management Powered by: <a href = "https://fierce-sea-43472.herokuapp.com/"> Want A Car Buy A Car </a> )
 		</h6>
 	
-	<div class="scrollbar" id="style-1" style="overflow-y:scroll; overflow-x:hidden; height:700px;">
-			
-	<div class="gradient" style = "background-color: <%= page.page_color if page.page_color %>">
+	<div class="scrollbar" id="style-1" style="overflow-y:scroll; overflow-x:hidden; height:700px; background-color: <%= page.page_color if page.page_color %>;">
 
-		<%- @listings.each do |i| -%>							
-			  <div class="wrap">
-			    <div class="card" style = "outline: 5px solid  <%= @website.footer_text_color if @website.footer_text_color.present? %>;">			      
-			        <div class="price"><%= i["price"] %><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></div>
-			        <div class="image" style = "background-image: url(<%= i["image"]["url"] if i["image"]["url"].present? %>);background-repeat:no-repeat; background-size:100% 100%; "></div>
-			        <div class="description">
-			            <div class="row">
-			              <div class="col-sm-6">
-			              	<h4 class="row text-center"><%= i["title"].upcase %></h4>
-			              	<h4 class="row text-center" style = "font-size: 12px;">Description: <%= i["description"].downcase %></h4>
-			              	<h4 class="row text-center" style ="font-size: 10px;">VIN: <%= i["vin"] %></h4>
-			              </div>
+			<%- @listings.each do |i| -%>
+				<div class="gradient" style = "background-color: <%= page.page_color if page.page_color %>">
+					<div class="wrap">
+					    <div class="card" style = "outline: 5px solid  <%= @website.footer_text_color if @website.footer_text_color.present? %>;">			      
+					        <div class="price"><%= i["price"] %><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></div>
+					        <div class="image" style = "background-image: url(<%= i["image"]["url"] if i["image"]["url"].present? %>);background-repeat:no-repeat; background-size:100% 100%; "></div>
+					        <div class="description">
+					            <div class="row">
+					              <div class="col-sm-6">
+					              	<h4 class="row text-center"><%= i["title"].upcase %></h4>
+					              	<h4 class="row text-center" style = "font-size: 12px;">Description: <%= i["description"].downcase %></h4>
+					              	<h4 class="row text-center" style ="font-size: 10px;">VIN: <%= i["vin"] %></h4>
+					              </div>
 
-			              <div class="col-sm-3"  >							
-							<p class="row text-left" style ="font-size: 10px;">Year: <%= i["year"] %></p>
-							<p class="row text-left" style ="font-size : 10px;">Miles: <%= i["miles"] %></p>
-							<p class="row text-left" style ="font-size : 10px;">Transmission: <%= i["transmission"] %></p>
-							<p class="row text-left" style ="font-size : 10px;">Color: <%= i["color"] %></p>
-						</div>
+					              <div class="col-sm-3"  >							
+									<p class="row text-left" style ="font-size: 10px;">Year: <%= i["year"] %></p>
+									<p class="row text-left" style ="font-size : 10px;">Miles: <%= i["miles"] %></p>
+									<p class="row text-left" style ="font-size : 10px;">Transmission: <%= i["transmission"] %></p>
+									<p class="row text-left" style ="font-size : 10px;">Color: <%= i["color"] %></p>
+								</div>
 
-						<div class="col-sm-3" >
-							<p class="row text-left" style ="font-size : 10px;">Cylinder: <%= i["cylinder"] %></p>
-							<p class="row text-left"style ="font-size : 10px;">Fuel: <%= i["fuel"] %></p>
-							<p class="row text-left" style ="font-size : 10px;">Drive: <%= i["drive"] %></p>
-							<p class="row text-left" style ="font-size: 10px;">Model: <%= i["model"] %></p>												
-						</div>
-			        </div>			            
-			        </div>			      
-			    </div>
-			  </div>
-							
-			<% end %>									
-			</div>
-		</div>
+								<div class="col-sm-3" >
+									<p class="row text-left" style ="font-size : 10px;">Cylinder: <%= i["cylinder"] %></p>
+									<p class="row text-left"style ="font-size : 10px;">Fuel: <%= i["fuel"] %></p>
+									<p class="row text-left" style ="font-size : 10px;">Drive: <%= i["drive"] %></p>
+									<p class="row text-left" style ="font-size: 10px;">Model: <%= i["model"] %></p>												
+								</div>
+					        </div>			            
+					        </div>			      
+					    </div>
+					 </div>									
+				</div>
+			<% end %>											
+	</div>
 
 	<% else %>
 		
