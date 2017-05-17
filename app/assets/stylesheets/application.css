@@ -452,7 +452,7 @@ table.center {
 .wrap {
   width: 80%;
   position: relative;
-  margin: 2px auto 2px auto;
+  margin: 10px auto 10px auto;
   top: 50%;
   
 }
