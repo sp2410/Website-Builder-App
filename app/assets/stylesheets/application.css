@@ -446,15 +446,15 @@ table.center {
 
 
 .gradient {  
-  min-height: 600px;  
+  min-height: 500px;    
 }
 
 .wrap {
   width: 80%;
   position: relative;
-  margin: 10px auto;  
-  
+  margin: 10px auto;     
 }
+
 @media (min-width:800px) {
   .wrap {
   width: 50%;
@@ -464,7 +464,7 @@ table.center {
 
 .card {
   position: relative;
-  margin: 2px auto;
+  margin: 0px auto;
   background-color: #fff;  
   box-shadow: 0px 1px 5px #999;
   overflow: hidden;
@@ -479,10 +479,6 @@ table.center {
   background-repeat: no-repeat;
   min-height: 300px;  
   transition: all .5s ease-in-out;
-  &:hover {
-    transform: rotate(-3deg) scale(1.1);
-    -webkit-transform: rotate(-3deg) scale(1.1);
-  }
     
 }
 
