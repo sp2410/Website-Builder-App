@@ -51,7 +51,7 @@ gem 'figaro'
 gem 'activeresource', github: 'rails/activeresource', branch: 'master'
 gem 'httparty'
 
-gem 'social-share-button'
+gem 'social-share-button', github: "huacnlee/social-share-button"
 
 
 group :development, :test do
