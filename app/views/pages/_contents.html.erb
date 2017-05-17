@@ -33,10 +33,9 @@
 	
 		<div class="scrollbar" id="style-1" style="overflow-y:scroll; overflow-x:hidden; height:600px;">
 			
-	
-		<%- @listings.each do |i| -%>				
+<div class="gradient" style = "background-color: <%= page.page_color if page.page_color %>">
 
-			<div class="gradient" style = "background-color: <%= page.page_color if page.page_color %>">
+		<%- @listings.each do |i| -%>							
 			  <div class="wrap">
 			    <div class="card" style = "outline: 5px solid  <%= @website.footer_text_color if @website.footer_text_color.present? %>;">			      
 			        <div class="price"><%= i["price"] %><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></div>
@@ -66,8 +65,9 @@
 			        </div>			      
 			    </div>
 			  </div>
-			</div>				
+							
 			<% end %>									
+			</div>
 		</div>
 
 	<% else %>
