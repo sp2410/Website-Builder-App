@@ -445,18 +445,16 @@ table.center {
 }
 
 
-.gradient {
-  height: 60%;        
+.gradient {  
+  min-height: 600px;
 }
 
 .wrap {
   width: 80%;
   position: relative;
-  margin: 2px auto 0 auto;
+  margin: 2px auto 2px auto;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  
 }
 @media (min-width:800px) {
   .wrap {
@@ -511,18 +509,7 @@ table.center {
   color: #eee;
   padding: 10px 20px 0px 20px;
   background-color: #333;
-  background-color: rgba(0, 0, 0, .7);
-  ul {padding: 0;}
-  li {
-    list-style: none;
-    display: inline-block;
-    margin-right: 20px;
-  }  
-  p {
-    font-size: 12px;
-    padding-top: 10px;
-    text-align: center;
-  }
+  background-color: rgba(0, 0, 0, .7);  
   .glyphicon {
     font-size: 20px;
     text-align: center;
