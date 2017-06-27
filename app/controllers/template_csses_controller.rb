@@ -69,6 +69,6 @@ class TemplateCssesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def template_css_params
-      params.require(:template_css).permit(:name,:css_description)
+      params.require(:template_css).permit(:name,:css_description, :cssimage)
     end
 end

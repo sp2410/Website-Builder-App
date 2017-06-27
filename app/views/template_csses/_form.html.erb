@@ -12,19 +12,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    
+  <div class="field">    
     <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    
     <%= f.text_area :css_description %>
+  </div>
+
+  <div class="field">
+     <%=f.file_field :cssimage, :label => "Upload CSS Template Image" %>
   </div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
 
 </div>
+

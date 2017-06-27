@@ -5,7 +5,7 @@
     <% @template_csses.each do |template| %>
 
       <div id = "templatecss" >                
-        <%= image_tag ("site1.png") %>                   
+        <%= image_tag template.cssimage.url %>             
 	      <div id = "background">
 	      	
 	      </div>
@@ -16,6 +16,5 @@
       
     <% end %>
 
-
-
 </div>
+
