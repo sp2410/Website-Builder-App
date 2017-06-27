@@ -9,7 +9,7 @@ CarrierWave.configure do |config|
 #    endpoint:              'https://s3.example.com:8080' # optional, defaults to nil
   }
 
-  config.fog_directory  = 'wacbacassetsdonttouch'                          # required
+  config.fog_directory  = 'websitebuilderdonttouch'                          # required
   
 end
 
