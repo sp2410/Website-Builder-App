@@ -222,6 +222,8 @@ GEM
     geocoder (1.4.1)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    heroku-deflater (0.6.3)
+      rack (>= 1.4.5)
     hirb (0.7.3)
     httparty (0.15.0)
       multi_xml (>= 0.5.2)
@@ -364,6 +366,7 @@ DEPENDENCIES
   figaro
   fog
   geocoder
+  heroku-deflater
   hirb
   httparty
   jbuilder (~> 2.5)
