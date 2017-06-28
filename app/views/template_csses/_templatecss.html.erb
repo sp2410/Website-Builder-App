@@ -1,20 +1,18 @@
-<div class="headerdiv1" style = "margin-left:auto; 
-    margin-right:auto;">
-  <h1 style = "text-align: center; margin-top: 40px; font-size: 90px; color: #ee0979;" >FREE TEMPLATES </h1>
+<div class="headerdiv1" ">
+  <div class = "col-lg-12 col-sm-12 col-xs-12">
+    <h1 style = "text-align: center; margin-top: 40px; color: #ee0979;" >FREE TEMPLATES </h1>
 
-    <% @template_csses.each do |template| %>
-
-      <div id = "templatecss" >                
-        <%= image_tag template.cssimage %>             
-	      <div id = "background">
-	      	
-	      </div>
-        <h2><strong><%= template.name %></strong></h2>
+      <% @template_csses.each do |template| %>
+      <div class = "col-lg-6 col-sm-12 col-xs-12">
+        <div id = "templatecss" >                
+          <%= image_tag template.cssimage %>               	      
+          <h2><strong><%= template.name %></strong></h2>
 
 
-      </div>
-      
-    <% end %>
-
+        </div>
+        </div>
+        
+      <% end %>
+  </div>
 </div>
 

@@ -10,15 +10,16 @@
 
 
       <ul class="nav navbar-nav navbar-right">             
-        <li>
+        <li>            
             <%= link_to "MAIN", website_path(@website.id) %>
+
         </li>
 
         <% @websitepages.each do |nav| %>  
           
           <li>
             <%- if user_signed_in? -%>
-              <%- if @website.user_id == current_user.id -%>
+              <%- if @website.user_id == current_user.id -%>                
                 <%= link_to "#{nav.title.upcase}", website_page_path(@website.id,nav.id) %>
               <% else %> 
                 <%-if nav.title.upcase.to_s != "HOME"-%>
@@ -41,6 +42,10 @@
                 <%= link_to "VIEW YOUR INBOX", website_messages_path(@website.id) %>
             </li>
 
+            <li>
+                <%= link_to "WEBSITE BUILDER", root_path %>
+            </li>
+            
              <li>
               <%= link_to 'ADD A PAGE', new_website_page_path(@website.id) %>
             </li>
