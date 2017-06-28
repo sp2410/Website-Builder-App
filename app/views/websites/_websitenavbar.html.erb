@@ -1,74 +1,77 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" >
   <div class="container-fluid">    
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" style="background: <%= @website.footer_color %>;">
+        <span class="icon-bar" style="background: <%= @website.footer_text_color %>;" ></span>
+        <span class="icon-bar" style="background: <%= @website.footer_text_color %>;"></span>
+        <span class="icon-bar" style="background: <%= @website.footer_text_color %>;"></span>                        
+      </button>
+
+
+  
       <ul class="nav navbar-nav navbar-left">
         <li>          
 		      <%= image_tag @website.logo,:class => "style_logo" %>		
         </li>
       </ul>
+    </div>
 
+      <div class="collapse navbar-collapse" id="myNavbar">      
+        <ul class="nav navbar-nav navbar-right">             
+          <li>            
+              <%= link_to "MAIN", website_path(@website.id) %>
 
-      <ul class="nav navbar-nav navbar-right">             
-        <li>            
-            <%= link_to "MAIN", website_path(@website.id) %>
-
-        </li>
-
-        <% @websitepages.each do |nav| %>  
-          
-          <li>
-            <%- if user_signed_in? -%>
-              <%- if @website.user_id == current_user.id -%>                
-                <%= link_to "#{nav.title.upcase}", website_page_path(@website.id,nav.id) %>
-              <% else %> 
-                <%-if nav.title.upcase.to_s != "HOME"-%>
-                  <%= link_to "#{nav.title.upcase}", website_page_path(@website.id,nav.id) %>
-                <% end %>  
-              <% end %>
-            <% else %>
-              <%-if nav.title.upcase.to_s != "HOME"-%>
-                  <%= link_to "#{nav.title.upcase}", website_page_path(@website.id,nav.id) %>
-                <% end %>  
-            <% end %>
           </li>
 
-        <% end %> 
-
-        <%- if user_signed_in? -%>
-          <%- if @website.user_id == current_user.id -%>
-
-            <li>
-                <%= link_to "VIEW YOUR INBOX", website_messages_path(@website.id) %>
-            </li>
-
-            <li>
-                <%= link_to "WEBSITE BUILDER", root_path %>
-            </li>
+          <% @websitepages.each do |nav| %>  
             
-             <li>
-              <%= link_to 'ADD A PAGE', new_website_page_path(@website.id) %>
+            <li>
+              <%- if user_signed_in? -%>
+                <%- if @website.user_id == current_user.id -%>                
+                  <%= link_to "#{nav.title.upcase}", website_page_path(@website.id,nav.id) %>
+                <% else %> 
+                  <%-if nav.title.upcase.to_s != "HOME"-%>
+                    <%= link_to "#{nav.title.upcase}", website_page_path(@website.id,nav.id) %>
+                  <% end %>  
+                <% end %>
+              <% else %>
+                <%-if nav.title.upcase.to_s != "HOME"-%>
+                    <%= link_to "#{nav.title.upcase}", website_page_path(@website.id,nav.id) %>
+                  <% end %>  
+              <% end %>
             </li>
 
           <% end %> 
-        <% end %> 
 
-        <% if current_user %>                     
-          <li>
-            <%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "SIGN IN", new_user_session_path %>
-          </li>
-        <% end %> 
+          <%- if user_signed_in? -%>
+            <%- if @website.user_id == current_user.id -%>
+
+              <li>
+                  <%= link_to "VIEW YOUR INBOX", website_messages_path(@website.id) %>
+              </li>                            
+               <li>
+                <%= link_to 'ADD A PAGE', new_website_page_path(@website.id) %>
+              </li>
+
+            <% end %> 
+          <% end %> 
+
+          <% if current_user %>                     
+            <li>
+              <%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "SIGN IN", new_user_session_path %>
+            </li>
+          <% end %> 
 
 
-      </ul>
-      
-
-      
-    </div>
+        </ul>
+      </div>
+          
   </div>
 </nav>
 
