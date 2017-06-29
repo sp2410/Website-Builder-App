@@ -5,7 +5,7 @@
 
       <% @websites.each do |website| %> 
       <div class = "col-lg-4 col-sm-12 col-xs-12">   
-        <div id="templatecss" >        
+        <div id="card1" >        
           <%= link_to website do %>                  
                     <% if website.logo.present? %>
                       <%= image_tag website.logo %>
