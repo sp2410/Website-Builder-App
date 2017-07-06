@@ -11,6 +11,9 @@ class Website < ApplicationRecord
 	geocoded_by :full_address
 	after_validation :geocode
 
+	mount_uploader :logo, ImageUploader
+	mount_uploader :mainimage, ImageUploader
+
 
 	def full_address
 		[city, state, zipcode].join(', ')

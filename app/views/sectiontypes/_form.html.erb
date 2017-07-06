@@ -15,37 +15,37 @@
 
   <div class="field">
     
-    <%= f.select :widget_type, ['Paragraph', 'Image','Video'] %>
+    <%= f.select :widget_type, ['Paragraph', 'Image'] %> <!-- ,'Video' -->
   </div>
 
     <div class="field">
     
-    <%= f.text_field :title %>
+    <%= f.text_field :title ,:label => "Select Title", placeholder: "Leave Blank If you dont want a title for the paragrah/image" %> 
   </div>
 
     <div class="field">
     
-    <%= f.text_field :type_url %>
+    <%= f.file_field :type_url,:label => "Use Only if widget is image (We are working on video integrations)" %>
   </div>
 
-    <div class="field">
+ <!--    <div class="field">
     
-    <%= f.text_field :font_type %>
+    <%= f.text_field :font_type, placeholder: "Choose a font type" %>
+  </div> -->
+
+  <div class="field">
+    
+    <%= f.text_area :details, placeholder: "Fill if its a paragraph, otherwise leave blank" %>
   </div>
 
   <div class="field">
     
-    <%= f.text_area :details %>
+    <%= f.text_field :image_border, placeholder: "Add an Image border color, if widget is image e.g black or #000000" %>
   </div>
 
   <div class="field">
     
-    <%= f.text_field :image_border %>
-  </div>
-
-  <div class="field">
-    
-    <%= f.text_field :text_color %>
+    <%= f.text_field :text_color, placeholder: "Add A text color if widget is paragraph, e.g black or #000000" %>
   </div>
 
 

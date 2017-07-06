@@ -17,79 +17,77 @@
 
 
 
-  <div class="field">
-    
-    <%= f.text_field :title %>
+  <div class="field">    
+    <%= f.text_field :title, placeholder: "Title of Your website (Preferebly Name of Your Business)" %>
   </div>
 
   <div class="field">
     
-    <%= f.text_field :title_color %>
+    <%= f.text_field :title_color, placeholder: "Add a color, choose color names or hex value like #000000" %> 
+  </div>
+
+  <div class="field">
+
+    <%= f.file_field :logo,:label => "Upload Your Logo", placeholder: "Choose your logo" %> 
+  </div>
+ 
+  <div class="field">
+    <%= f.file_field :mainimage,:label => "Upload Your background Picture", placeholder: "Choose your Background Image for Hero Div" %>
   </div>
 
   <div class="field">
     
-    <%= f.text_field :logo %>
+    <%= f.text_field :subheading, placeholder: "Add A Subheading" %>
   </div>
 
   <div class="field">
     
-    <%= f.text_field :mainimage %>
-  </div>
-
-  <div class="field">
-    
-    <%= f.text_field :subheading %>
-  </div>
-
-  <div class="field">
-    
-    <%= f.text_field :facebooklink %>
+    <%= f.text_field :facebooklink, placeholder: "Add your facebook page link" %> 
   </div>
 
    <div class="field">
     
-    <%= f.text_field :twitterlink %>
+    <%= f.text_field :twitterlink, placeholder: "Add your twitter page link"  %>
   </div>
 
    <div class="field">
     
-    <%= f.text_field :youtubelink %>
+    <%= f.text_field :youtubelink, placeholder: "Add your youtube page link"  %>
   </div>
 
   <div class="field">
     
-    <%= f.text_field :subheading_color %>
+    <%= f.text_field :subheading_color, placeholder: "Add the subheading color, enter color name or hex value like #000000"  %>
   </div>
 
   <div class="field">
     
-    <%= f.text_field :footer_color %>
+    <%= f.text_field :footer_color, placeholder: "Add your footer color, enter color name or hex value like #000000"  %>
   </div>
 
   <div class="field">
     
-    <%= f.text_field :footer_text_color %>
+    <%= f.text_field :footer_text_color, placeholder: "Add your footer text colors"  %>
   </div>
 
   <div class="field">
     
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, placeholder: "Add your Phone Number in format: +13103459140"%>
   </div>
 
    <div class="field">
     
-    <%= f.text_field :city %>
+    <%= f.text_field :city, placeholder: "Enter City Name"  %>
   </div>
 
    <div class="field">
     
-    <%= f.text_field :state %>
+    <%= f.text_field :state, placeholder: "Enter State Name"  %> 
   </div>
 
    <div class="field">
     
-    <%= f.text_field :zipcode %>
+    <%= f.text_field :zipcode, placeholder: "Enter Zipcode to show your location on map"  %> %>
   </div>
 
   
@@ -100,8 +98,6 @@
 
   
         
-
-
 
   <div class="actions">
     <%= f.submit %>
