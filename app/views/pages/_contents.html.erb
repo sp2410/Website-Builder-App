@@ -32,53 +32,48 @@
 		</h6>
 	
 	<div class="scrollbar" id="style-1" style="overflow-y:scroll; overflow-x:hidden; height:700px; background-color: <%= page.page_color if page.page_color %>;">
-	
-			<%- @listings.each do |i| -%>
-				<div class = "col-sm-12 col-md-6 col-lg-6">
-				
-							<div class="wrap">
-							    <div class="card1" style = "outline: 5px solid  <%= @website.footer_text_color if @website.footer_text_color.present? %>;">			      
-							        <div class="price" style = "background-color: rgba(0,0,0,0.5);">
-							        <p style ="margin: 0px;font-size: 20px;"><%= i["price"] %>
-							        <span class="glyphicon glyphicon-usd" aria-hidden="true"></p>
-							        </span>
-							        </div>
 
-							        <div class="image1" style = "background-image: url(<%= i["image"]["url"] if i["image"]["url"].present? %>);"></div>
+		<%- @listings.each do |i| -%>
+			<div class = "col-sm-12 col-md-6 col-lg-6">
+				<div class="wrap">
+					<div class="card1" style = "outline: 5px solid  <%= @website.footer_text_color if @website.footer_text_color.present? %>;">			      
+						<div class="price" style = "background-color: rgba(0,0,0,0.5);">
+							<p style ="margin: 0px;font-size: 20px;"><%= i["price"] %><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></p>
+						</div>
 
-							        <div class="description">
-							            <div class="row">
-							              <div class="col-sm-12">							              	
-							              	<h4 class="row text-center"><%= i["title"].upcase %></h4>
-							              	<h4 class="row text-center" style = "font-size: 12px;">Description: <%= i["description"].downcase %></h4>
-							              		<%= social_share_button_tag( @website.title + " - " +i["title"].downcase , :url => "#{@website_path}", 
-							              		:image => i["image"]["url"] , desc: i["description"]) %>
+						<div class="image1" style = "background-image: url(<%= i["image"]["url"] if i["image"]["url"].present? %>);"></div>
 
-											</div>							              
-								            <div class="col-sm-6"  >
-								            	<h4 style ="margin: 0px;font-size: 10px;">VIN: <%= i["vin"] %></h4>
-												<p style ="margin: 0px;font-size: 10px;">Year: <%= i["year"] %></p>
-												<p style ="margin: 0px;font-size : 10px;">Miles: <%= i["miles"] %></p>
-												<p style ="margin: 0px;font-size : 10px;">Transmission: <%= i["transmission"] %></p>
-												<p style ="margin: 0px;font-size : 10px;">Color: <%= i["color"] %></p>
-											</div>
+						<div class="description">
+							<div class="row">
+								<div class="col-sm-12">							              	
+									<h4 class="row text-center"><%= i["title"].upcase %></h4>
+									<h4 class="row text-center" style = "font-size: 12px;">Description: <%= i["description"].downcase %></h4>
+									<%= social_share_button_tag( @website.title + " - " +i["title"].downcase , :url => "#{@website_path}", 
+									              		:image => i["image"]["url"] , desc: i["description"]) %>
 
-											<div class="col-sm-6" >
-												<p style ="margin: 0px;font-size : 10px;">Cylinder: <%= i["cylinder"] %></p>
-												<p style ="margin: 0px;font-size : 10px;">Fuel: <%= i["fuel"] %></p>
-												<p style ="margin: 0px;font-size : 10px;">Drive: <%= i["drive"] %></p>
-												<p style ="margin: 0px;font-size: 10px;">Model: <%= i["model"] %></p>												
-											</div>
-										</div>
-							        </div>			            
-							    </div>			      
+								</div>							              
+								<div class="col-sm-6"  >
+									<h4 style ="margin: 0px;font-size: 10px;">VIN: <%= i["vin"] %></h4>
+									<p style ="margin: 0px;font-size: 10px;">Year: <%= i["year"] %></p>
+									<p style ="margin: 0px;font-size : 10px;">Miles: <%= i["miles"] %></p>
+									<p style ="margin: 0px;font-size : 10px;">Transmission: <%= i["transmission"] %></p>
+									<p style ="margin: 0px;font-size : 10px;">Color: <%= i["color"] %></p>
+								</div>
+
+								<div class="col-sm-6" >
+									<p style ="margin: 0px;font-size : 10px;">Cylinder: <%= i["cylinder"] %></p>
+									<p style ="margin: 0px;font-size : 10px;">Fuel: <%= i["fuel"] %></p>
+									<p style ="margin: 0px;font-size : 10px;">Drive: <%= i["drive"] %></p>
+									<p style ="margin: 0px;font-size: 10px;">Model: <%= i["model"] %></p>
+								</div>
 							</div>
-														
-						
-					</div>
+						</div>			            
+					</div>			      
 				</div>
-			
-			<% end %>													
+			</div>	
+		<% end %>	
+	
+															
 	</div>
 
 	<% else %>
