@@ -14,6 +14,8 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
+    @website = Website.find(params[:website_id])  
+    @websitepages = @website.pages
     @message = Message.new
   end
 

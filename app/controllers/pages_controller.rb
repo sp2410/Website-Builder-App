@@ -16,10 +16,10 @@ class PagesController < ApplicationController
     @sections = @page.page_sections
 
     if (@page.title == "inventory")
-      @newlisting = Listing.new("https://fierce-sea-43472.herokuapp.com/categories.json")
-      @listings = @newlisting.getresponse((User.find_by_id(@website.user_id).email).to_s)      
-      #@listings = @newlisting.getresponse("bob@gmail.com")            
-      #@listings = @newlisting.getresponse("admin@gmail.com")      
+      # @newlisting = Listing.new("https://fierce-sea-43472.herokuapp.com/categories.json")
+      # @listings = @newlisting.getresponse((User.find_by_id(@website.user_id).email).to_s)      
+      @listings = Inventory.where(:website_id => @page.website_id)
+        
     end
 
   end

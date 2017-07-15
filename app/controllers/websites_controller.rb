@@ -27,9 +27,10 @@ class WebsitesController < ApplicationController
     @pages = @websitepages.where(:show_page_on_index => true)
     @times = @website.timetables 
 
-    @newlisting = Listing.new("https://fierce-sea-43472.herokuapp.com/categories.json")
-    #@listings = @newlisting.getresponse((User.find_by_id(@website.user_id).email).to_s)      
-    @listings = @newlisting.getresponse((User.find_by_id(@website.user_id).email).to_s)           
+    # @newlisting = Listing.new("https://fierce-sea-43472.herokuapp.com/categories.json")    
+    # @listings = @newlisting.getresponse((User.find_by_id(@website.user_id).email).to_s)
+
+    @listings = Inventory.where(:website_id => @website.id)           
   end
 
   # GET /websites/new

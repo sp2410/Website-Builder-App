@@ -1,0 +1,85 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Inventories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zipcode</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>User</th>
+      <th>Image</th>
+      <th>Year</th>
+      <th>Miles</th>
+      <th>Transmission</th>
+      <th>Color</th>
+      <th>Cylinder</th>
+      <th>Fuel</th>
+      <th>Drive</th>
+      <th>Price</th>
+      <th>Newused</th>
+      <th>Vin</th>
+      <th>Model</th>
+      <th>Trim</th>
+      <th>Enginedescription</th>
+      <th>Interiorcolor</th>
+      <th>Imagefront</th>
+      <th>Imageback</th>
+      <th>Imageleft</th>
+      <th>Imageright</th>
+      <th>Frontinterior</th>
+      <th>Rearinterior</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inventories.each do |inventory| %>
+      <tr>
+        <td><%= inventory.title %></td>
+        <td><%= inventory.description %></td>
+        <td><%= inventory.street %></td>
+        <td><%= inventory.city %></td>
+        <td><%= inventory.state %></td>
+        <td><%= inventory.zipcode %></td>
+        <td><%= inventory.latitude %></td>
+        <td><%= inventory.longitude %></td>
+        <td><%= inventory.user_id %></td>
+        <td><%= inventory.image %></td>
+        <td><%= inventory.year %></td>
+        <td><%= inventory.miles %></td>
+        <td><%= inventory.transmission %></td>
+        <td><%= inventory.color %></td>
+        <td><%= inventory.cylinder %></td>
+        <td><%= inventory.fuel %></td>
+        <td><%= inventory.drive %></td>
+        <td><%= inventory.price %></td>
+        <td><%= inventory.newused %></td>
+        <td><%= inventory.vin %></td>
+        <td><%= inventory.model %></td>
+        <td><%= inventory.trim %></td>
+        <td><%= inventory.enginedescription %></td>
+        <td><%= inventory.interiorcolor %></td>
+        <td><%= inventory.imagefront %></td>
+        <td><%= inventory.imageback %></td>
+        <td><%= inventory.imageleft %></td>
+        <td><%= inventory.imageright %></td>
+        <td><%= inventory.frontinterior %></td>
+        <td><%= inventory.rearinterior %></td>
+        <td><%= link_to 'Show', inventory %></td>
+        <td><%= link_to 'Edit', edit_inventory_path(inventory) %></td>
+        <td><%= link_to 'Destroy', inventory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Inventory', new_inventory_path %>

@@ -4,6 +4,7 @@ class Website < ApplicationRecord
 	has_many :timetables
 	has_one :social_medialinks
 	has_many :messages
+	has_many :listings
 
 	has_one :template_csses
 

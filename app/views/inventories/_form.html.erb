@@ -1,0 +1,136 @@
+<div class="col-md-12 text-center">
+<%= bootstrap_form_for inventory, :url => {:action => 'create'} do |f| %>
+  <% if inventory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(inventory.errors.count, "error") %> prohibited this inventory from being saved:</h2>
+
+      <ul>
+      <% inventory.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="field">
+    
+    <%= f.text_field :vin %>
+  </div>
+
+
+  <div class="field">
+    
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.text_area :description %>
+  </div>
+  
+  <div class="field">
+    
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.number_field :year %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.number_field :miles %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.text_field :transmission %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.text_field :color %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.text_field :cylinder %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.text_field :fuel %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.text_field :drive %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.select :newused, ['U','N'] %>
+  </div>
+
+ 
+  <div class="field">
+    
+    <%= f.text_field :model %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.text_field :trim %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.text_field :enginedescription %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.text_field :interiorcolor %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.file_field :imagefront %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.file_field :imageback %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.file_field :imageleft %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.file_field :imageright %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.file_field :frontinterior %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.file_field :rearinterior %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

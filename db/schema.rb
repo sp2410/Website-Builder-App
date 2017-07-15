@@ -10,7 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627044537) do
+ActiveRecord::Schema.define(version: 20170714182429) do
+
+  create_table "inventories", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "vin"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "image"
+    t.integer  "year"
+    t.integer  "miles"
+    t.string   "transmission"
+    t.string   "color"
+    t.string   "cylinder"
+    t.string   "fuel"
+    t.string   "drive"
+    t.integer  "price",             default: 0
+    t.string   "newused"
+    t.string   "model"
+    t.string   "trim"
+    t.string   "enginedescription"
+    t.string   "interiorcolor"
+    t.string   "imagefront"
+    t.string   "imageback"
+    t.string   "imageleft"
+    t.string   "imageright"
+    t.string   "frontinterior"
+    t.string   "rearinterior"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "website_id"
+    t.index ["website_id"], name: "index_inventories_on_website_id"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.string   "name"
