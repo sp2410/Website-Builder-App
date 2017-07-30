@@ -10,7 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714182429) do
+ActiveRecord::Schema.define(version: 20170729205932) do
+
+  create_table "added_cost_vendors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "contact"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "added_costs", force: :cascade do |t|
+    t.datetime "cost_date"
+    t.float    "cost"
+    t.boolean  "billed"
+    t.float    "labor_cost_total"
+    t.float    "total"
+    t.string   "method_of_payment"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "vehicle_costs_id"
+    t.index ["vehicle_costs_id"], name: "index_added_costs_on_vehicle_costs_id"
+  end
+
+  create_table "floor_plans", force: :cascade do |t|
+    t.boolean  "floor_planned"
+    t.float    "amount_floor_planned"
+    t.datetime "date_opened"
+    t.float    "percentcharged"
+    t.float    "admin_fee"
+    t.float    "setup_fee"
+    t.float    "additional_fee"
+    t.float    "length_of_floor_plan"
+    t.integer  "days_untill_firstcurtailment"
+    t.integer  "days_untill_secondcurtailment"
+    t.integer  "days_untill_third_curtailment"
+    t.string   "company_name"
+    t.string   "company_contact"
+    t.float    "total"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "vehicle_cost_id"
+    t.index ["vehicle_cost_id"], name: "index_floor_plans_on_vehicle_cost_id"
+  end
 
   create_table "inventories", force: :cascade do |t|
     t.string   "title"
@@ -81,6 +122,20 @@ ActiveRecord::Schema.define(version: 20170714182429) do
     t.index ["website_id"], name: "index_pages_on_website_id"
   end
 
+  create_table "previous_owners", force: :cascade do |t|
+    t.string   "name"
+    t.string   "street_address"
+    t.string   "zip"
+    t.string   "city"
+    t.string   "state"
+    t.string   "phone"
+    t.string   "used_vehicle_for"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "inventory_id"
+    t.index ["inventory_id"], name: "index_previous_owners_on_inventory_id"
+  end
+
   create_table "sectiontypes", force: :cascade do |t|
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
@@ -128,6 +183,21 @@ ActiveRecord::Schema.define(version: 20170714182429) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "vehicle_costs", force: :cascade do |t|
+    t.datetime "purchasedate"
+    t.float    "originalcost"
+    t.float    "buyerfee"
+    t.float    "lotfee"
+    t.float    "addedcst"
+    t.float    "floorplancost"
+    t.float    "totalcost"
+    t.string   "methodofpayment"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "inventory_id"
+    t.index ["inventory_id"], name: "index_vehicle_costs_on_inventory_id"
   end
 
   create_table "websites", force: :cascade do |t|

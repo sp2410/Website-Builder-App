@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @previous_owner.name %>
+</p>
+
+<p>
+  <strong>Street address:</strong>
+  <%= @previous_owner.street_address %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @previous_owner.zip %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @previous_owner.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @previous_owner.state %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @previous_owner.phone %>
+</p>
+
+<p>
+  <strong>Used vehicle for:</strong>
+  <%= @previous_owner.used_vehicle_for %>
+</p>
+
+<%= link_to 'Edit', edit_previous_owner_path(@previous_owner) %> |
+<%= link_to 'Back', previous_owners_path %>

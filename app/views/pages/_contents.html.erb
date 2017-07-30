@@ -27,63 +27,59 @@
 		<h3 style ="color: <%= @website.footer_text_color if @website.footer_text_color.present? %>;">	  
 		  OUR INVENTORY
 		</h3>
-		<p style ="color: <%= @website.footer_text_color if @website.footer_text_color.present? %>; font-size: 10px;">	  
+		<!-- <p style ="color: <%= @website.footer_text_color if @website.footer_text_color.present? %>; font-size: 10px;">	  
 		  ( Automatic Inventory Management Powered by: <a href = "https://fierce-sea-43472.herokuapp.com/"> Want A Car Buy A Car </a> )
 
-		</p>
+		</p> -->
+					
 
-		
-	<div class="scrollbar" id="style-1" style="overflow-y:scroll; overflow-x:hidden; height:700px; background-color: <%= page.page_color if page.page_color %>;">
+		<%= search_form_for @search, url: search_website_inventories_path(@website.id), method: :post do |f| %>	
 
-		<%- @listings.each do |i| -%>
-			<div class = "col-sm-12 col-md-6 col-lg-6">
-				<div class="wrap">
-					<div class="card1" style = "outline: 2px solid  <%= @website.footer_text_color if @website.footer_text_color.present? %>;">			      
-						<div class="price" style = "background-color: rgba(0,0,0,0.5);outline: 2px solid  <%= @website.footer_text_color if @website.footer_text_color.present? %>;">
-							<p style ="margin: 0px;font-size: 20px;"><%= i.price %><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></p>
-						</div>
 
-						<div class="image1" style = "background-image: url(<%= i.image.url if i.image.present? %>);"></div>
 
-						<div class="description" style = "outline: 2px solid  <%= @website.footer_text_color if @website.footer_text_color.present? %>;">
-							<div class="row">
-								<div class="col-sm-12">
+			<!-- <p>
+				<%= text_field_tag :search, params[:search]%>
+				<%= submit_tag "Search", :name => nil, class: 'btn btn-primary' %>
+			</p> -->
 
-									
+			<%= f.condition_fields do |c| %>
 
-									<h4 class="row text-center"><%= i.title.upcase %></h4>
-									<h4 class="row text-center" style = "font-size: 12px;">Description: <%= i["description"].downcase %></h4>
-									<%= social_share_button_tag( @website.title + " - " +i.title.downcase , :url => "#{@website_path}", :image => i.image.url , desc: i["description"]) %>
-									<%- if user_signed_in? -%>
-										<%- if page.website.user_id == current_user.id -%>
-											<div class="col-md-12 text-center" style = "margin-bottom: 5px;">
-												<%= link_to 'Edit Vehicle', edit_website_inventory_path(@website.id,i),class: "btn btn-default btn-xs" %>
-											</div>
-										<% end %>
-									<% end %>
-								</div>	
+				<div class = "field">
+					<%= c.attribute_fields do |a|%>
+						<%= a.attribute_select({}, :id => 'select') %>
+					<% end %>
+					<%= c.predicate_select({}, :id => 'pselect') %>
+					<%= c.value_fields do |v| %>
+						<%= v.text_field :value %>
+					<% end %>
 
-								<div class="col-sm-6"  >
-									<h4 style ="margin: 0px;font-size: 10px;">VIN: <%= i.vin %></h4>
-									<p style ="margin: 0px;font-size: 10px;">Year: <%= i.year %></p>
-									<p style ="margin: 0px;font-size : 10px;">Miles: <%= i.miles %></p>
-									<p style ="margin: 0px;font-size : 10px;">Transmission: <%= i.transmission %></p>
-									<p style ="margin: 0px;font-size : 10px;">Color: <%= i.color %></p>
-								</div>
-
-								<div class="col-sm-6" >
-									<p style ="margin: 0px;font-size : 10px;">Cylinder: <%= i.cylinder %></p>
-									<p style ="margin: 0px;font-size : 10px;">Fuel: <%= i.fuel %></p>
-									<p style ="margin: 0px;font-size : 10px;">Drive: <%= i.drive %></p>
-									<p style ="margin: 0px;font-size: 10px;">Model: <%= i.model %></p>
-								</div>
-							</div>
-						</div>			            
-					</div>			      
 				</div>
-			</div>	
-		<% end %>	
-	</div>
+
+			<% end %>
+			
+			<div class = "actions">
+				<%=f.submit "Search", class: "btn btn-primary" %>
+			</div>
+
+		<% end %>
+
+
+		<div id = "invent">
+			<table class = "pretty" align="center">
+				<tr>					
+					<th style ="color: <%= @website.footer_text_color if @website.footer_text_color.present? %>; text-decoration: underline;"><%= sort_link @search, :price, "Product Price" %></th>
+					<th style ="color: <%= @website.footer_text_color if @website.footer_text_color.present? %>;text-decoration: underline;" ><%= sort_link @search, :title, "Title" %></th>				
+					<th style ="color: <%= @website.footer_text_color if @website.footer_text_color.present? %>;text-decoration: underline;" ><%= sort_link @search, :created_at, "Created At" %></th>				
+				</tr>
+			</table>
+
+			<div class="scrollbar" id="style-1" style="overflow-y:scroll; overflow-x:hidden; height:700px; background-color: <%= page.page_color if page.page_color %>;">
+
+
+			<%= render 'pages/inventory' %>				
+
+			</div>
+		</div>
 
 		<%- if user_signed_in? -%>
 			<%- if page.website.user_id == current_user.id -%>
@@ -93,6 +89,8 @@
 			<% end %>
 		<% end %>
 
+		<%= will_paginate @listings, :style => "color: #{@website.footer_text_color if @website.footer_text_color.present?}" %>
+
 
 
 	<% else %>
@@ -100,15 +98,7 @@
 		
 
 		<% sections.each do |section| %>
-
-			<!-- <script>
-
-				jQuery(document).ready(function(){
-				    jQuery('.col-md-12').arrangeable();
-				    jQuery('.col-md-<%= (12/section.number_of_elements.to_i) %>').arrangeable();
-				});
-
-			</script> -->
+			
 
 			<div class="col-md-12 text-center" style = "background-color: <%= section.background_color if section.background_color %>;
 				<%- if user_signed_in? -%>
@@ -151,14 +141,17 @@
 
 						<%- if widget.widget_type.to_s == "Paragraph" -%>
 
-							<h2 style = "color: <%= widget.text_color if  widget.text_color.present? %>;" ><%= widget.title if widget.title.present? %></h2>
-							<p style = "color: <%= widget.text_color if  widget.text_color.present? %>;" ><%= widget.details if widget.details.present? %></p>
+							<div style = "margin-top:15%;">
+
+								<h2 style = "color: <%= widget.text_color if  widget.text_color.present? %>; " ><%= widget.title if widget.title.present? %></h2>
+								<p style = "text-align: justify; color: <%= widget.text_color if  widget.text_color.present? %>;"><%= widget.details if widget.details.present? %></p>
+							</div>
 
 						<%- elsif widget.widget_type.to_s == "Image" -%>
 
 							<h2 style = "color: <%= widget.text_color if widget.text_color.present? %>;"><%= widget.title if widget.title.present? %></h2>
 
-							<%= image_tag widget.type_url.url,  :style => "margin-bottom: 5px; height: 70%; width: 100%; outline: 2px solid #{widget.image_border if widget.image_border.present? }" %>							
+							<%= image_tag widget.type_url.url,  :style => "margin-bottom: 5px; width: 80%; outline: 2px solid #{widget.image_border if widget.image_border.present? }" %>							
 
 						<%- elsif widget.widget_type.to_s == "Video" -%>						
 
@@ -170,6 +163,7 @@
 					</div>
 
 				<% end %>	
+
 				<%- if user_signed_in? -%>
 					<%- if page.website.user_id == current_user.id -%>
 					
@@ -190,3 +184,85 @@
 		
 
 </div>
+
+
+<script>
+(function() {
+
+  init(); //on page load - show first slide, hidethe rest
+
+  function init() {
+
+    parents = document.getElementsByClassName('slideshow-container');
+
+    for (j = 0; j < parents.length; j++) {
+      var slides = parents[j].getElementsByClassName("mySlides");
+      var dots = parents[j].getElementsByClassName("dot");
+      slides[0].classList.add('active-slide');
+      dots[0].classList.add('active');
+    }
+  }
+
+  dots = document.getElementsByClassName('dot'); //dots functionality
+
+  for (i = 0; i < dots.length; i++) {
+
+    dots[i].onclick = function() {
+
+      slides = this.parentNode.parentNode.getElementsByClassName("mySlides");
+
+      for (j = 0; j < this.parentNode.children.length; j++) {
+        this.parentNode.children[j].classList.remove('active');
+        slides[j].classList.remove('active-slide');
+        if (this.parentNode.children[j] == this) {
+          index = j;
+        }
+      }
+      this.classList.add('active');
+      slides[index].classList.add('active-slide');
+
+    }
+  }
+//prev/next functionality
+  links = document.querySelectorAll('.slideshow-container a');
+
+  for (i = 0; i < links.length; i++) {
+    links[i].onclick = function() {
+      current = this.parentNode;
+
+      var slides = current.getElementsByClassName("mySlides");
+      var dots = current.getElementsByClassName("dot");
+      curr_slide = current.getElementsByClassName('active-slide')[0];
+      curr_dot = current.getElementsByClassName('active')[0];
+      curr_slide.classList.remove('active-slide');
+      curr_dot.classList.remove('active');
+      if (this.className == 'next') {
+
+        if (curr_slide.nextElementSibling.classList.contains('mySlides')) {
+          curr_slide.nextElementSibling.classList.add('active-slide');
+          curr_dot.nextElementSibling.classList.add('active');
+        } else {
+          slides[0].classList.add('active-slide');
+          dots[0].classList.add('active');
+        }
+
+      }
+
+      if (this.className == 'prev') {
+
+        if (curr_slide.previousElementSibling) {
+          curr_slide.previousElementSibling.classList.add('active-slide');
+          curr_dot.previousElementSibling.classList.add('active');
+        } else {
+          slides[slides.length - 1].classList.add('active-slide');
+          dots[slides.length - 1].classList.add('active');
+        }
+
+      }
+
+    }
+
+  }
+})();
+
+</script>

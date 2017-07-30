@@ -1,0 +1,2 @@
+class VehicleCost < ApplicationRecord
+end

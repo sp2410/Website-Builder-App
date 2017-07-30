@@ -38,7 +38,14 @@
   
   </head>
 
-  <body>        
+  <body>  
+
+  <div class = "container">
+      <%= content_tag :div, alert, class: "flash bg-danger" if alert %>
+      <%= content_tag :div, notice, class: "flash bg-success" if notice %>
+      <div id="notification" class = "flash bg-success"> </div>    
+    </div>
+          
 
     <%= yield %>
   </body>

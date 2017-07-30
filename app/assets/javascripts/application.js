@@ -16,3 +16,15 @@
 //= require_tree .
 //= require social-share-button
 
+
+
+// $(function() {
+//   $("#invent th a, #invent .pagination a").on("click", function() {
+//     $.getScript(this.href);
+//     return false;
+//   });
+//   // $("#search input").keyup(function() {
+//   //   $.get($("#search").attr("action"), $("#search").serialize(), null, "script");
+//   //   return false;
+//   // });
+// });

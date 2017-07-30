@@ -1,6 +1,7 @@
 class WebsitesController < ApplicationController
   before_action :set_website, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new,:create,:edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /websites
   # GET /websites.json
@@ -26,12 +27,22 @@ class WebsitesController < ApplicationController
     @websitepages = @website.pages
     @pages = @websitepages.where(:show_page_on_index => true)
     @times = @website.timetables 
+    @search = Inventory.where(:website_id => @website.id).ransack(params[:q])    
+    @listings = @search.result.paginate(:per_page => 12, :page => params[:page])    
+    @search.build_condition       
 
     # @newlisting = Listing.new("https://fierce-sea-43472.herokuapp.com/categories.json")    
     # @listings = @newlisting.getresponse((User.find_by_id(@website.user_id).email).to_s)
+    # if params[:sort].present? && params[:direction].present?
+        
+    # else
+    #   @listings = @search.result.paginate(:per_page => 12, :page => params[:page])           
+    # end
 
-    @listings = Inventory.where(:website_id => @website.id)           
   end
+
+
+  
 
   # GET /websites/new
   def new
@@ -96,6 +107,16 @@ class WebsitesController < ApplicationController
     def website_params
       params.require(:website).permit(:title,:logo,:mainimage,:subheading,:title_color, :subheading_color, :footer_color, :footer_text_color,:phone,:city,:state,:zipcode,:facebooklink,:twitterlink,:youtubelink,:template_csses_id,:user_id)
     end
+
+    def sort_column
+      Inventory.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    end
+  
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
+
 end
 
 

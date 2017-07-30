@@ -1,6 +1,11 @@
 Rails.application.routes.draw do  
   
  
+  resources :floor_plans
+  resources :added_cost_vendors
+  resources :added_costs
+  resources :previous_owners
+  resources :vehicle_costs
   resources :inventories
   devise_for :users
 	resources :template_csses
@@ -9,7 +14,9 @@ Rails.application.routes.draw do
 	resources :websites do	
 		resources :timetables
 		resources :messages
-		resources :inventories
+		resources :inventories do 
+			collection {post :search, to: 'inventories#index'}
+		end
 
 		resources :pages do 
 			resources :page_sections do 

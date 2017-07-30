@@ -4,3 +4,62 @@
 
 <%= render 'form', inventory: @inventory, website: @website %>
 
+
+<script>
+  
+  $(document).ready(function(){
+
+    $(document).on("change", "input#inventory_vin", function(e){
+    var vin = $('input#inventory_vin').val();
+    var vin = $.trim(vin)
+    console.log(vin);
+    var url = String(vin);
+    var prev ="https://api.edmunds.com/api/vehicle/v2/vins/";
+    var rest ="?fmt=json&api_key=";
+    var key = "<%= ENV['EDMUNDS_API_KEY'] %>";
+    var net = prev+url+rest+key;
+
+
+    var div = '<div class="alert" ' +'style="top:0px;">'+'</div>';
+	
+          
+     $.ajax({
+
+        url: net,
+        dataType: "json",
+        type: "get", 
+        data: { get_param: 'value' },        
+        success: function(response){
+          
+          
+          $('input#inventory_title').val(response["make"]["name"]);
+          $('input#inventory_model').val(response["model"]["name"]);
+          $('input#inventory_year').val(response["years"][0]["year"]);
+          $('input#inventory_fuel').val(response["engine"]["fuelType"]);
+          $('input#inventory_cylinder').val(response["engine"]["cylinder"]);
+                    
+          console.log("jiouza!");
+           
+
+          $("#notification").empty();
+                
+          $("#notification").fadeIn("slow").append('Great! We Found Your Vehicle and Autofilled Title, Year, Model, Cylinder and Fuel. Please Check For Correctness and Fill Out The Rest Of The Fields');
+        },
+
+        error: function(){
+        	console.log("error");
+         //  	console.log(key);   
+
+        $("#notification").empty();
+         $("#notification").fadeIn("slow").append('Oops! Right Now We Were Unable To AutoFill the fields, Please Check the VIN for Correctness or Fill Up the Fields Manually');
+        },
+
+     });
+    });
+  });
+
+
+
+
+</script>
+

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Vehicle Costs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Purchasedate</th>
+      <th>Originalcost</th>
+      <th>Buyerfee</th>
+      <th>Lotfee</th>
+      <th>Addedcst</th>
+      <th>Floorplancost</th>
+      <th>Totalcost</th>
+      <th>Methodofpayment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehicle_costs.each do |vehicle_cost| %>
+      <tr>
+        <td><%= vehicle_cost.purchasedate %></td>
+        <td><%= vehicle_cost.originalcost %></td>
+        <td><%= vehicle_cost.buyerfee %></td>
+        <td><%= vehicle_cost.lotfee %></td>
+        <td><%= vehicle_cost.addedcst %></td>
+        <td><%= vehicle_cost.floorplancost %></td>
+        <td><%= vehicle_cost.totalcost %></td>
+        <td><%= vehicle_cost.methodofpayment %></td>
+        <td><%= link_to 'Show', vehicle_cost %></td>
+        <td><%= link_to 'Edit', edit_vehicle_cost_path(vehicle_cost) %></td>
+        <td><%= link_to 'Destroy', vehicle_cost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vehicle Cost', new_vehicle_cost_path %>

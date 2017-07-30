@@ -34,6 +34,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'will_paginate', '~> 3.1.0'
+# gem 'jquery-rails'
+gem 'ransack'
+
+
 
 gem 'hirb'
 gem 'geocoder'
@@ -47,6 +52,7 @@ gem 'mini_magick', '~> 4.3'
 gem "fog"
 
 gem 'figaro'
+gem 'kaminari'
 
 gem 'activeresource', github: 'rails/activeresource', branch: 'master'
 gem 'httparty'

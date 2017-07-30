@@ -1,0 +1,123 @@
+<%- @listings.each do |i| -%>
+
+			<div class = "col-sm-12 col-md-6 col-lg-4">
+				<div class="wrap">
+					<div class="card1" style = "outline: 5px solid  <%= @website.footer_text_color if @website.footer_text_color.present? %>;">	
+
+							<div class="price" style = "background-color: rgba(0,0,0,0.5);outline: 2px solid  <%= @website.footer_text_color if @website.footer_text_color.present? %>; z-index: 1000;">
+								<p style ="margin: 0px;font-size: 20px;"><%= i.price %><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></p>
+							</div>
+
+
+							<div class="slideshow-container" >
+								<%- if i.image.present? -%>
+								  <div class="mySlides">
+								    <img src=<%= i.image.url if i.image.present? %> style="width:100%">
+								  </div>
+								<% end %>
+
+								<%- if i.imagefront.present? -%>
+								  <div class="mySlides">
+								    <img src=<%= i.imagefront.url if i.imagefront.present? %> style="width:100%">
+								  </div>
+								<% end %>
+
+								<%- if i.imageback.present? -%>
+
+								  <div class="mySlides">
+								    <img src=<%= i.imageback.url if i.imageback.present? %> style="width:100%">
+								  </div>
+								<% end %>
+
+								<%- if i.imageleft.present? -%>  
+								    <div class="mySlides">
+								    <img src=<%= i.imageleft.url if i.imageleft.present? %> style="width:100%">
+								  </div>
+
+								<% end %>
+
+								<%- if i.imageright.present? -%>  
+								    <div class="mySlides">
+								    <img src=<%= i.imageright.url if i.imageright.present? %> style="width:100%">
+								  </div>
+
+								<% end %>
+
+								<%- if i.frontinterior.present? -%>  
+								    <div class="mySlides">
+								    <img src=<%= i.frontinterior.url if i.frontinterior.present? %> style="width:100%">
+								  </div>
+
+								<% end %>
+
+								<%- if i.rearinterior.present? -%>  
+								    <div class="mySlides">
+								    <img src=<%= i.rearinterior.url if i.rearinterior.present? %> style="width:100%">
+								  </div>
+
+								<% end %>	
+
+								<a class="prev">&#10094;</a>
+								<a class="next">&#10095;</a>
+							  	
+
+								<div style="text-align:center; margin-top: -35px;">
+									<%- if i.image.present? -%>
+									  <span class="dot"></span>
+									 <% end %>
+									 <%- if i.imagefront.present? -%>
+									  <span class="dot" ></span>
+									 <% end %>
+									 <%- if i.imageback.present? -%>
+									  <span class="dot" ></span>
+									 <% end %>
+									 <%- if i.imageleft.present? -%>
+									   <span class="dot"></span>
+									 <% end %>
+
+									 <%- if i.imageright.present? -%>
+									   <span class="dot"></span>
+									 <% end %>							
+
+									  <%- if i.frontinterior.present? -%>
+									   <span class="dot"></span>
+									 <% end %>
+
+									  <%- if i.rearinterior.present? -%>
+									   <span class="dot"></span>
+									 <% end %>
+								</div>
+							</div>						
+					<div class="description" style = "outline: 5px solid  <%= @website.footer_text_color if @website.footer_text_color.present? %>;">
+								<div class="row">
+									<div class="col-sm-12">
+
+										
+
+										<h4 class="row text-center"><%= i.title.upcase %></h4>
+										<h4 class="row text-center" style = "font-size: 12px;">Description: <%= i["description"].downcase %></h4>
+									</div>	
+
+									<div class="col-sm-6"  >
+										<h4 style ="margin: 0px;font-size: 10px;">VIN: <%= i.vin %></h4>
+										<p style ="margin: 0px;font-size: 10px;">Year: <%= i.year %></p>
+										<p style ="margin: 0px;font-size : 10px;">Miles: <%= i.miles %></p>
+										<p style ="margin: 0px;font-size : 10px;">Transmission: <%= i.transmission %></p>
+										<p style ="margin: 0px;font-size : 10px;">Color: <%= i.color %></p>
+									</div>
+
+									<div class="col-sm-6" >
+										<p style ="margin: 0px;font-size : 10px;">Cylinder: <%= i.cylinder %></p>
+										<p style ="margin: 0px;font-size : 10px;">Fuel: <%= i.fuel %></p>
+										<p style ="margin: 0px;font-size : 10px;">Drive: <%= i.drive %></p>
+										<p style ="margin: 0px;font-size: 10px;">Model: <%= i.model %></p>
+									</div>
+								</div>
+					</div>
+
+				</div>			            
+								      
+				</div>
+			</div>	
+<% end %>	
+	

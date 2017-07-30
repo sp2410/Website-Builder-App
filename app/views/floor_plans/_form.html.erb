@@ -1,0 +1,87 @@
+<%= form_for(floor_plan) do |f| %>
+  <% if floor_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(floor_plan.errors.count, "error") %> prohibited this floor_plan from being saved:</h2>
+
+      <ul>
+      <% floor_plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :floor_planned %>
+    <%= f.check_box :floor_planned %>
+  </div>
+
+  <div class="field">
+    <%= f.label :amount_floor_planned %>
+    <%= f.text_field :amount_floor_planned %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_opened %>
+    <%= f.datetime_select :date_opened %>
+  </div>
+
+  <div class="field">
+    <%= f.label :percentcharged %>
+    <%= f.text_field :percentcharged %>
+  </div>
+
+  <div class="field">
+    <%= f.label :admin_fee %>
+    <%= f.text_field :admin_fee %>
+  </div>
+
+  <div class="field">
+    <%= f.label :setup_fee %>
+    <%= f.text_field :setup_fee %>
+  </div>
+
+  <div class="field">
+    <%= f.label :additional_fee %>
+    <%= f.text_field :additional_fee %>
+  </div>
+
+  <div class="field">
+    <%= f.label :length_of_floor_plan %>
+    <%= f.text_field :length_of_floor_plan %>
+  </div>
+
+  <div class="field">
+    <%= f.label :days_untill_firstcurtailment %>
+    <%= f.number_field :days_untill_firstcurtailment %>
+  </div>
+
+  <div class="field">
+    <%= f.label :days_untill_secondcurtailment %>
+    <%= f.number_field :days_untill_secondcurtailment %>
+  </div>
+
+  <div class="field">
+    <%= f.label :days_untill_third_curtailment %>
+    <%= f.number_field :days_untill_third_curtailment %>
+  </div>
+
+  <div class="field">
+    <%= f.label :company_name %>
+    <%= f.text_field :company_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :company_contact %>
+    <%= f.text_field :company_contact %>
+  </div>
+
+  <div class="field">
+    <%= f.label :total %>
+    <%= f.text_field :total %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

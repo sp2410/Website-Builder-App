@@ -1,0 +1,57 @@
+<%= form_for(vehicle_cost) do |f| %>
+  <% if vehicle_cost.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vehicle_cost.errors.count, "error") %> prohibited this vehicle_cost from being saved:</h2>
+
+      <ul>
+      <% vehicle_cost.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :purchasedate %>
+    <%= f.datetime_select :purchasedate %>
+  </div>
+
+  <div class="field">
+    <%= f.label :originalcost %>
+    <%= f.text_field :originalcost %>
+  </div>
+
+  <div class="field">
+    <%= f.label :buyerfee %>
+    <%= f.text_field :buyerfee %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lotfee %>
+    <%= f.text_field :lotfee %>
+  </div>
+
+  <div class="field">
+    <%= f.label :addedcst %>
+    <%= f.text_field :addedcst %>
+  </div>
+
+  <div class="field">
+    <%= f.label :floorplancost %>
+    <%= f.text_field :floorplancost %>
+  </div>
+
+  <div class="field">
+    <%= f.label :totalcost %>
+    <%= f.text_field :totalcost %>
+  </div>
+
+  <div class="field">
+    <%= f.label :methodofpayment %>
+    <%= f.text_field :methodofpayment %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

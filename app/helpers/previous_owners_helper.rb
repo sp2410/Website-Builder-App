@@ -1,0 +1,2 @@
+module PreviousOwnersHelper
+end

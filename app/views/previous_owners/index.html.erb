@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Previous Owners</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Street address</th>
+      <th>Zip</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Phone</th>
+      <th>Used vehicle for</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @previous_owners.each do |previous_owner| %>
+      <tr>
+        <td><%= previous_owner.name %></td>
+        <td><%= previous_owner.street_address %></td>
+        <td><%= previous_owner.zip %></td>
+        <td><%= previous_owner.city %></td>
+        <td><%= previous_owner.state %></td>
+        <td><%= previous_owner.phone %></td>
+        <td><%= previous_owner.used_vehicle_for %></td>
+        <td><%= link_to 'Show', previous_owner %></td>
+        <td><%= link_to 'Edit', edit_previous_owner_path(previous_owner) %></td>
+        <td><%= link_to 'Destroy', previous_owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Previous Owner', new_previous_owner_path %>

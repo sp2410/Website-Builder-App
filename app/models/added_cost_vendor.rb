@@ -1,0 +1,2 @@
+class AddedCostVendor < ApplicationRecord
+end

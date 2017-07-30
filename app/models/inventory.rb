@@ -18,22 +18,28 @@ class Inventory < ApplicationRecord
 	
 
 	def self.search(params)
-		if params
-			listings = Listing.all
-			listings = listings.joins(:category).where("categories.name like '#{params[:category].downcase}'") if params[:category].present?
-			listings = listings.where("listings.NewUsed = '#{params[:NewUsed][0].upcase}'") if params[:NewUsed].present?
-			listings = listings.where("price >= ?", "#{params[:minprice]}") if params[:minprice].present?			
-			listings = listings.where("price <= ?", "#{params[:maxprice]}") if params[:maxprice].present?			
+		# if params
+		# 	listings = Listing.all
+		# 	listings = listings.joins(:category).where("categories.name like '#{params[:category].downcase}'") if params[:category].present?
+		# 	listings = listings.where("listings.NewUsed = '#{params[:NewUsed][0].upcase}'") if params[:NewUsed].present?
+		# 	listings = listings.where("price >= ?", "#{params[:minprice]}") if params[:minprice].present?			
+		# 	listings = listings.where("price <= ?", "#{params[:maxprice]}") if params[:maxprice].present?			
 					
 
-			if params[:radius].present?
-				listings = listings.near(params[:location],params[:radius]) if params[:location].present?
-			else
-				listings = listings.near(params[:location],200) if params[:location].present?
-			end
+		# 	if params[:radius].present?
+		# 		listings = listings.near(params[:location],params[:radius]) if params[:location].present?
+		# 	else
+		# 		listings = listings.near(params[:location],200) if params[:location].present?
+		# 	end
 
-			listings
+		# 	listings
 
+		# else
+		# 	all
+		# end
+
+		if params
+			where('title Like ?', "%#{params}")
 		else
 			all
 		end

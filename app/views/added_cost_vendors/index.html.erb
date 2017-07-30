@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Added Cost Vendors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Contact</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @added_cost_vendors.each do |added_cost_vendor| %>
+      <tr>
+        <td><%= added_cost_vendor.name %></td>
+        <td><%= added_cost_vendor.contact %></td>
+        <td><%= link_to 'Show', added_cost_vendor %></td>
+        <td><%= link_to 'Edit', edit_added_cost_vendor_path(added_cost_vendor) %></td>
+        <td><%= link_to 'Destroy', added_cost_vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Added Cost Vendor', new_added_cost_vendor_path %>

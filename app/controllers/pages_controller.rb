@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+    before_action :set_page, only: [:show, :edit, :update, :destroy]
+    helper_method :sort_column, :sort_direction
 
   # GET /pages
   # GET /pages.json
@@ -18,7 +19,13 @@ class PagesController < ApplicationController
     if (@page.title == "inventory")
       # @newlisting = Listing.new("https://fierce-sea-43472.herokuapp.com/categories.json")
       # @listings = @newlisting.getresponse((User.find_by_id(@website.user_id).email).to_s)      
-      @listings = Inventory.where(:website_id => @page.website_id)
+      if params[:sort].present? && params[:direction].present?
+        @listings = Inventory.where(:website_id => @website.id).search(params[:search]).order(params[:sort] + " " + params[:direction]).paginate(:per_page => 12, :page => params[:page])           
+      else
+        @listings = Inventory.where(:website_id => @website.id).search(params[:search]).paginate(:per_page => 12, :page => params[:page])           
+      end
+
+      # @listings = Inventory.where(:website_id => @website.id)
         
     end
 
@@ -88,4 +95,15 @@ class PagesController < ApplicationController
     def page_params
       params.require(:page).permit(:title,:website_id,:show_page_on_index,:header,:header_color,:subheader,:subheader_color,:page_color)
     end
+
+     def sort_column
+      Inventory.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    end
+  
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
+
+
 end

@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Floor Plans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Floor planned</th>
+      <th>Amount floor planned</th>
+      <th>Date opened</th>
+      <th>Percentcharged</th>
+      <th>Admin fee</th>
+      <th>Setup fee</th>
+      <th>Additional fee</th>
+      <th>Length of floor plan</th>
+      <th>Days untill firstcurtailment</th>
+      <th>Days untill secondcurtailment</th>
+      <th>Days untill third curtailment</th>
+      <th>Company name</th>
+      <th>Company contact</th>
+      <th>Total</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @floor_plans.each do |floor_plan| %>
+      <tr>
+        <td><%= floor_plan.floor_planned %></td>
+        <td><%= floor_plan.amount_floor_planned %></td>
+        <td><%= floor_plan.date_opened %></td>
+        <td><%= floor_plan.percentcharged %></td>
+        <td><%= floor_plan.admin_fee %></td>
+        <td><%= floor_plan.setup_fee %></td>
+        <td><%= floor_plan.additional_fee %></td>
+        <td><%= floor_plan.length_of_floor_plan %></td>
+        <td><%= floor_plan.days_untill_firstcurtailment %></td>
+        <td><%= floor_plan.days_untill_secondcurtailment %></td>
+        <td><%= floor_plan.days_untill_third_curtailment %></td>
+        <td><%= floor_plan.company_name %></td>
+        <td><%= floor_plan.company_contact %></td>
+        <td><%= floor_plan.total %></td>
+        <td><%= link_to 'Show', floor_plan %></td>
+        <td><%= link_to 'Edit', edit_floor_plan_path(floor_plan) %></td>
+        <td><%= link_to 'Destroy', floor_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Floor Plan', new_floor_plan_path %>

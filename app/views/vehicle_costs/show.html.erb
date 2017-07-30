@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Purchasedate:</strong>
+  <%= @vehicle_cost.purchasedate %>
+</p>
+
+<p>
+  <strong>Originalcost:</strong>
+  <%= @vehicle_cost.originalcost %>
+</p>
+
+<p>
+  <strong>Buyerfee:</strong>
+  <%= @vehicle_cost.buyerfee %>
+</p>
+
+<p>
+  <strong>Lotfee:</strong>
+  <%= @vehicle_cost.lotfee %>
+</p>
+
+<p>
+  <strong>Addedcst:</strong>
+  <%= @vehicle_cost.addedcst %>
+</p>
+
+<p>
+  <strong>Floorplancost:</strong>
+  <%= @vehicle_cost.floorplancost %>
+</p>
+
+<p>
+  <strong>Totalcost:</strong>
+  <%= @vehicle_cost.totalcost %>
+</p>
+
+<p>
+  <strong>Methodofpayment:</strong>
+  <%= @vehicle_cost.methodofpayment %>
+</p>
+
+<%= link_to 'Edit', edit_vehicle_cost_path(@vehicle_cost) %> |
+<%= link_to 'Back', vehicle_costs_path %>

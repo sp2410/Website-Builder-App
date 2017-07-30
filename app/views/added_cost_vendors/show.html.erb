@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @added_cost_vendor.name %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @added_cost_vendor.contact %>
+</p>
+
+<%= link_to 'Edit', edit_added_cost_vendor_path(@added_cost_vendor) %> |
+<%= link_to 'Back', added_cost_vendors_path %>
